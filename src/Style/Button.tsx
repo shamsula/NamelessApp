@@ -33,15 +33,17 @@ export function Button ({label,colour}: Props): JSX.Element {
 const StyledButton = styled(animated.button)<{colour?: string}>`
   text-decoration: none;
   border: none;
-  background-color: ${({ theme,colour }) => colour ? colour : theme.colours.desertSand};
+  background-color: ${({ theme,colour }) => colour ? colour : theme.colours.blueSapphire};
   color: ${({ theme }) => theme.colours.honedew};
-  padding: 12px;
+  padding: 12px 20px;
   text-transform: capitalize;
   cursor: pointer;
   border-radius: 4px;
   &:hover {
     text-decoration: none;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    background-color: ${({ theme,colour }) => colour ? colour : theme.colours.lightBlueSapphire};
+
   }
 `
 const Label = styled.label`

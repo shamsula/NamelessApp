@@ -18,7 +18,7 @@ export function Icon ({colour, icon}: Props): JSX.Element {
 export default Icon 
 
 const StyledIcon = styled(MaterialIcon)<{colour?:string}>`
-color: ${({ theme,colour }) => colour ? colour : theme.colours.desertSand};
+color: ${({ theme,colour }) => colour ? theme.colours[colour] : theme.colours.desertSand};
 // font-size: 2rem !important;
 
 // height: 1em;

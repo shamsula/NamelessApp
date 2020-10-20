@@ -21,6 +21,7 @@ const StyledLink = styled(Link)`
     display: flex;
     justify-content: flex-end;
     text-decoration: none;
-    color: ${({theme})=> theme.colours.desertSand};
+    color: ${({theme})=> theme.colours.blueSapphire};
     margin-bottom: 12px;
+    text-shadow: ${({theme})=> theme.textShadow[0]}
 `

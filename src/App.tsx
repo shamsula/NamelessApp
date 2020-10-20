@@ -6,21 +6,22 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring'
 import Biography from './Bio/Bio'
 import Home from './Home/Home'
-import { Top, Footer } from './Style/Stuff';
+import { Top } from './Style/Stuff';
 import { Link } from 'react-router-dom'
 import Spinner from './Style/Spinner';
 import { Container } from '@material-ui/core'
+import Footer from './TopStyle/Footer'
 
 function App() {
 
   const springProps = useSpring({
     opacity: 1,
     minHeight: '100vh',
-    backgroundColor: 'black',
+    backgroundColor: '#1c1c1c',
     from: {
       opacity: 0,
       minHeight: '20vh',
-      backgroundColor: 'white',
+      backgroundColor: '#fff',
     },
     config: { duration: 1500 }
   })
@@ -30,7 +31,7 @@ function App() {
     <HomeCont style={springProps}>
       <Top>
         <SuperHeader maxWidth="md">
-          <Spinner colour="honedew"/>
+          <Spinner colour="lightBlueSapphire"/>
         </SuperHeader>
         <Switch>
           <Route exact path="/">
@@ -41,9 +42,7 @@ function App() {
           </Route>
           <Redirect to="/" />
         </Switch>
-        <Footer
-          maxWidth="md"
-        >
+        <Footer>
           <StyledLink to="/about">
             <h5>About</h5>
           </StyledLink>
@@ -58,13 +57,18 @@ export default App;
 const HomeCont = styled(animated.div)`
   display: flex;
   // min-height: 100vh;
-  background-color: black;
+  background-color: ${({ theme }) => theme.colours.newBlack};
 `
 
 const StyledLink = styled(Link)`
     display: flex;
     justify-content: center;
     text-decoration: none;
+    border-radius: 4px;
+    padding: 0.3rem 1rem;
+    &:hover{
+      background-color: ${({theme}) => theme.colours.darkGrey};
+    }
 `
 const SuperHeader = styled(Container)`
   && {

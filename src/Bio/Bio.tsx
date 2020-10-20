@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/macro';
-import { Top, StyledContainer, Header } from '../Style/Stuff';
+import { Top, StyledContainer, Header, headerSpringProps } from '../Style/Stuff';
 import { useSpring, animated, interpolate } from 'react-spring'
 import Dashwund from '../img/dashwund.jpg'
 import Texture from '../img/paper.png'
@@ -11,7 +11,7 @@ type Props = {
 
 };
 export function Bio(props: Props): JSX.Element {
-  const [flipped, set] = useState(false)
+  const [flipped, set] = useState<boolean>(false)
   const [canClick, setCanClick] = useState<boolean>(true)
   const { transform,
     //  opacity
@@ -20,6 +20,8 @@ export function Bio(props: Props): JSX.Element {
     transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
     config: { mass: 5, tension: 900, friction: 100 }
   })
+
+  const headerProps = useSpring(headerSpringProps)
 
 
 
@@ -69,17 +71,18 @@ export function Bio(props: Props): JSX.Element {
 
   return (
     <>
-      <StyledContainer maxWidth="md">
-        <Header>
-          <h1>Biography</h1>
+    <Header maxWidth="md">
+          <animated.h1 style={headerProps}>Biography</animated.h1>
         </Header>
+      <StyledContainer maxWidth="md">
+        
         <Body onClick={handleOnClick}>
           <Back />
           <FlipContainer>
 
             <TextContainer
               style={{ transform: rotateContainer() }}
-              isFlipped={flipped}
+              flipped={flipped ? 1 : 0}
             // style={{ opacity: interpolate(opacity,(o=> 1-o)), transform }}
             >
 
@@ -100,20 +103,25 @@ export function Bio(props: Props): JSX.Element {
 export default Bio
 
 const Body = styled.div`
-margin-top: 40px;
-padding: 40px 15%;
-font-size: 1.6rem;
+// margin-top: 40px;
+// padding: 40px 15%;
+// font-size: 1.6rem;
+padding: 25px;
+    min-height: 75vh;
+    border: 1px solid ${({ theme }) => theme.colours.platinum};
+    border-radius: 4px;
+    margin-top: 12px;
 `
 const FlipContainer = styled.div`
  position: relative;
 `
-const TextContainer = styled(animated.div)<{isFlipped: boolean}>`
-color: ${({ isFlipped }) => isFlipped ? '#fff' :`inherit`  };
+const TextContainer = styled(animated.div)<{flipped: number}>`
+color: ${({ flipped }) => flipped === 1 ? '#fff' :`inherit`  };
  padding: 24px;
 // background-color: black;
-background: ${({ theme, isFlipped }) => isFlipped ? `url(${Dashwund}), black` : `url(${Texture}), ${theme.colours.desertSand}`  };
-background-size: ${({isFlipped})=> isFlipped ?  'auto 100%' : 'auto'};
-background-repeat: ${({isFlipped})=> isFlipped ?  'no-repeat' : 'repeat'};
+background: ${({ theme, flipped }) => flipped === 1 ? `url(${Dashwund}), black` : `url(${Texture}), ${theme.colours.persianGreen}`  };
+background-size: ${({flipped})=> flipped === 1 ?  'auto 100%' : 'auto'};
+background-repeat: ${({flipped})=> flipped === 1 ?  'no-repeat' : 'repeat'};
 background-position: center;
 // position: absolute;
 min-height: 200px;
@@ -125,7 +133,10 @@ const SubHeadingCont = styled.div`
 `
 
 const H4 = styled.h4`
+  && {
   color: ${({ theme }) => theme.colours.honeydew};
+  }
+  margin: 0 2rem 0 0.5em;
 `
 
 

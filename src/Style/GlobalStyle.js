@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   html {
     font-weight: 400;
-    colour: ${({theme}) => theme.colours.crystal};
+    colour: ${({theme}) => theme.colours.newBlack};
     font-size: 1rem;
     line-height: 1.3rem;
   }
@@ -20,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
   h1, h2, h3, h4, h5, h6 {
     font-family: ${({theme}) => theme.fontFamilies.heading};
     margin: 0 0 0.3rem;
-    color: ${({ theme }) => theme.colours.desertSand};
+    // color: ${({ theme }) => theme.colours.desertSand};
   }
 
    p {
