@@ -27,6 +27,12 @@ export const GlobalStyle = createGlobalStyle`
     font-family: ${({theme}) => theme.fontFamilies.paragraph};
     margin: 0 0 5px;
   }
+
+  p.cursive{
+    font-family: ${({theme}) => theme.fontFamilies.cursive};
+    line-height: 1.9rem;
+    padding: 0 2rem;
+  }
   input {
       color: inherit;
     }

@@ -60,7 +60,8 @@ enum FontFamilies {
     heading = '\'Russo One\',Helvetica, Arial, sans-serif',
     body = '\'Kanit\',Helvetica, Arial, sans-serif',
     cursive = '\'Dancing Script\',Helvetica, Arial, sans-serif',
-    paragraph = '\'Dawning of a New Day\',Helvetica, Arial, sans-serif',
+    altCursive = '\'Dawning of a New Day\',Helvetica, Arial, sans-serif',
+    paragraph = '\'Abel\',Helvetica, Arial, sans-serif',
     narrow = '\'Wire One\',Helvetica, Arial, sans-serif',
 }
 

@@ -40,10 +40,11 @@ export function Bio(props: Props): JSX.Element {
           <SubHeadingCont>
             <H4>Intro</H4>
           </SubHeadingCont>
-          <p>
+          <p className="cursive">
             Welcome, this is where I tell my story. It's short and uninspiring, so no need to get all worked up just yet. I'm a Software Developer and I'm currently pursuing life as a video game.
             Gathering resources and useful hobbies along the path. Are you perhaps interested, in learing more?
         </p>
+            <p style={{textAlign:"right"}} className="cursive">- Limon</p>
         </>
       )
     } else {
@@ -52,7 +53,7 @@ export function Bio(props: Props): JSX.Element {
           <SubHeadingCont>
             <H4>Flip Side</H4>
           </SubHeadingCont>
-          <p>
+          <p className="cursive">
             End of Line, Pal.
           </p>
         </>
@@ -126,18 +127,22 @@ background-repeat: ${({flipped})=> flipped === 1 ?  'no-repeat' : 'repeat'};
 background-position: center;
 // position: absolute;
 min-height: 200px;
-box-shadow: ${({theme})=> theme.boxShadows[1]};
+box-shadow: ${({theme})=> theme.boxShadows[0]};
+&:hover{
+  box-shadow: ${({theme})=> theme.boxShadows[1]};
+}
 `
 
 const SubHeadingCont = styled.div`
   margin: 0 5px 20px 5px;
+  padding: 0;
 `
 
-const H4 = styled.h4`
+const H4 = styled.h2`
   && {
   color: ${({ theme }) => theme.colours.honeydew};
   }
-  margin: 0 2rem 0 0.5em;
+  // margin: 0 2rem 0 0.5em;
 `
 
 
