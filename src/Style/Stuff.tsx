@@ -23,7 +23,7 @@ export const Top = styled.main`
   width: 100%;
 `
 export const StyledContainer = styled(Container) <{ colour?: string }>`
-  background: ${({ theme, colour }) => colour ? colour : theme.colours.honedew};
+  background: ${({ theme, colour }) => colour ? colour : theme.colours.platinum};
   min-height: 100vh;
   padding: 12px;
 `
@@ -36,11 +36,12 @@ export const Header = styled(Container)`
     }
     text-transform: uppercase;
     padding: 24px 4px;
-    color: ${({ theme }) => theme.colours.honeyDew};
+    color: ${({ theme }) => theme.colours.orangePeel};
     text-shadow: ${({ theme }) => theme.textShadow[1]};
     // background: ${({ theme }) => theme.colours.persianGreen};
-    background: ${({ theme }) => theme.linearGradient}; 
-    border-bottom: solid 2px ${({ theme }) => theme.colours.platinum};
+    // background: ${({ theme }) => theme.linearGradient}; 
+    background: ${({ theme }) => theme.colours.honeyDew}; 
+    border-bottom: solid 2px ${({ theme }) => theme.colours.quickSilver};
 
 `
 

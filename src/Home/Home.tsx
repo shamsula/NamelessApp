@@ -27,13 +27,13 @@ export function Home(props: Props): JSX.Element {
                 
 
                 <Body>
-                    <Border>
+                    {/* <Border> */}
                         <StyledLink to="/bio">
                             <Button
                                 label="Auto-Biography"
                             />
                         </StyledLink>
-                    </Border>
+                    {/* </Border> */}
                 </Body>
                 
             </StyledContainer>
@@ -49,8 +49,8 @@ export default Home
 const Body = styled.div`
     padding: 25px;
     min-height: 75vh;
-    // background: ${({ theme }) => theme.colours.platinum};
-    border: 1px solid ${({ theme }) => theme.colours.platinum};
+    background: ${({ theme }) => theme.colours.honeyDew};
+    border: 1px solid ${({ theme }) => theme.colours.quickSilver};
     border-radius: 4px;
     margin-top: 12px;
 `

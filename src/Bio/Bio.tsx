@@ -108,7 +108,8 @@ const Body = styled.div`
 // font-size: 1.6rem;
 padding: 25px;
     min-height: 75vh;
-    border: 1px solid ${({ theme }) => theme.colours.platinum};
+    background: ${({ theme }) => theme.colours.honeyDew};
+    border: 1px solid ${({ theme }) => theme.colours.quickSilver};
     border-radius: 4px;
     margin-top: 12px;
 `
@@ -116,10 +117,10 @@ const FlipContainer = styled.div`
  position: relative;
 `
 const TextContainer = styled(animated.div)<{flipped: number}>`
-color: ${({ flipped }) => flipped === 1 ? '#fff' :`inherit`  };
+color: ${({ flipped }) => flipped === 1 ? '#fff' :`#fff`  };
  padding: 24px;
 // background-color: black;
-background: ${({ theme, flipped }) => flipped === 1 ? `url(${Dashwund}), black` : `url(${Texture}), ${theme.colours.persianGreen}`  };
+background: ${({ theme, flipped }) => flipped === 1 ? `url(${Dashwund}), black` : `url(${Texture}), ${theme.colours.orangePeel}`  };
 background-size: ${({flipped})=> flipped === 1 ?  'auto 100%' : 'auto'};
 background-repeat: ${({flipped})=> flipped === 1 ?  'no-repeat' : 'repeat'};
 background-position: center;

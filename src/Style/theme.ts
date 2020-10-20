@@ -24,6 +24,7 @@ enum Colours {
     // other colours 
     roseMadder ='hsl(353, 81%, 51%)',
     orangePeel = 'hsl(35, 100%, 55%)',
+    lightOrangePeel = 'hsl(35, 100%, 60%)',
 
 
     // greys 
