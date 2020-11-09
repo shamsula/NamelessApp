@@ -51,5 +51,4 @@ const Label = styled.label`
     text-decoration: none;
 `
 
-Button.displayName= 'Button';
 

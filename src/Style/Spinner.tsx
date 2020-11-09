@@ -18,7 +18,6 @@ export function Spinner({colour}: Props): JSX.Element {
     );
 };
 
-Spinner.displayName = 'Spinner';
 
 export default Spinner
 
@@ -28,7 +27,8 @@ const SpinnerContainer = styled.div`
 `
 // courtesy of Chris Smith (March); default is original colours
 const StyledLoader = styled.div<{colour?:string}>`
-animation:${spin} 1s infinite linear;
+// animation:${spin} 1s infinite linear;
+animation:${spin} 1s infinite cubic-bezier(1,0,0,1);
 border:solid 2px transparent;
 border-radius:50%;
 border-right-color: ${({theme, colour})=> colour ? theme.colours[colour] : '#09f' } ; 
@@ -40,20 +40,20 @@ position:relative;
 top:calc(50% - 10px);
 width:20px;
 z-index:1;
-&:before {
-  animation:${spin} 2s infinite linear;
-  border:solid 2px transparent;
-  border-radius:50%;
-  border-right-color: ${({theme, colour})=> colour ? theme.colours[colour] : '#3cf' } ;
-  border-top-color: ${({theme, colour})=> colour ? theme.colours[colour] : '#3cf' } ;
-  box-sizing:border-box;
-  content:"";
-  height:16px;
-  left:0;
-  position:absolute;
-  top:0;
-  width:16px;
-}
+// &:before {
+//   animation:${spin} 2s infinite linear;
+//   border:solid 2px transparent;
+//   border-radius:50%;
+//   border-right-color: ${({theme, colour})=> colour ? theme.colours[colour] : '#3cf' } ;
+//   border-top-color: ${({theme, colour})=> colour ? theme.colours[colour] : '#3cf' } ;
+//   box-sizing:border-box;
+//   content:"";
+//   height:16px;
+//   left:0;
+//   position:absolute;
+//   top:0;
+//   width:16px;
+// }
 &:after {
   animation:${spin} 3s infinite linear;
   border:solid 2px transparent;

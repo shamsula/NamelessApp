@@ -33,6 +33,11 @@ export function Home(props: Props): JSX.Element {
                                 label="Auto-Biography"
                             />
                         </StyledLink>
+                        <StyledLink to="/portfolio">
+                            <Button
+                                label="Portfolio"
+                            />
+                        </StyledLink>
                     {/* </Border> */}
                 </Body>
                 
@@ -56,6 +61,7 @@ const Body = styled.div`
 `
 
 const StyledLink = styled(Link)`
+    margin: 2.6rem 0;
     display: flex;
     justify-content: center;
     text-decoration: none;

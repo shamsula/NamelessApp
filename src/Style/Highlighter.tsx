@@ -46,7 +46,6 @@ function Highlighter(props: Props): JSX.Element {
     );
 };
 
-Highlighter.displayName = 'Highlighter';
 
 export default Highlighter
 

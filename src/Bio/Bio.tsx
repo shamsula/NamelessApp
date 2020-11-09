@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/macro';
-import { Top, StyledContainer, Header, headerSpringProps } from '../Style/Stuff';
+import { Top, StyledContainer, Header, headerSpringProps, Body } from '../Style/Stuff';
 import { useSpring, animated, interpolate } from 'react-spring'
 import Dashwund from '../img/dashwund.jpg'
 import Texture from '../img/paper.png'
@@ -103,17 +103,6 @@ export function Bio(props: Props): JSX.Element {
 
 export default Bio
 
-const Body = styled.div`
-// margin-top: 40px;
-// padding: 40px 15%;
-// font-size: 1.6rem;
-padding: 25px;
-    min-height: 75vh;
-    background: ${({ theme }) => theme.colours.honeyDew};
-    border: 1px solid ${({ theme }) => theme.colours.quickSilver};
-    border-radius: 4px;
-    margin-top: 12px;
-`
 const FlipContainer = styled.div`
  position: relative;
 `

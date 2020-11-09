@@ -5,6 +5,7 @@ import styled from 'styled-components/macro';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring'
 import Biography from './Bio/Bio'
+import Portfolio from './Portfolio/Portfolio'
 import Home from './Home/Home'
 import { Top } from './Style/Stuff';
 import { Link } from 'react-router-dom'
@@ -31,7 +32,7 @@ function App() {
     <HomeCont style={springProps}>
       <Top>
         <SuperHeader maxWidth="md">
-          <Spinner colour="lightBlueSapphire"/>
+          <Spinner colour="orangePeel"/>
         </SuperHeader>
         <Switch>
           <Route exact path="/">
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route path="/bio">
             <Biography />
+          </Route>
+          <Route path="/portfolio">
+            <Portfolio />
           </Route>
           <Redirect to="/" />
         </Switch>

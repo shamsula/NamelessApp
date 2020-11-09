@@ -44,6 +44,14 @@ export const Header = styled(Container)`
     border-bottom: solid 2px ${({ theme }) => theme.colours.quickSilver};
 
 `
+export const Body = styled.div`
+padding: 25px;
+    min-height: 75vh;
+    background: ${({ theme }) => theme.colours.honeyDew};
+    border: 1px solid ${({ theme }) => theme.colours.quickSilver};
+    border-radius: 4px;
+    margin-top: 12px;
+`
 
 export const headerSpringProps = {
   to: {

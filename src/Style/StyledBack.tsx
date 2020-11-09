@@ -13,7 +13,6 @@ export function StyledBack (props: Props): JSX.Element {
   );
 };
 
-StyledBack.displayName= 'StyledBack';
 
 export default StyledBack
 

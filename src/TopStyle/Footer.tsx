@@ -19,7 +19,6 @@ function Footer (props: Props): JSX.Element {
   );
 };
 
-Footer.displayName= 'Footer';
 
 export default Footer
 
