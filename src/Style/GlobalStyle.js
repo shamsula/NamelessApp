@@ -1,6 +1,5 @@
-import {createGlobalStyle} from 'styled-components';
-import 'normalize.css';
-
+import { createGlobalStyle } from "styled-components";
+import "normalize.css";
 
 export const GlobalStyle = createGlobalStyle`
   *, *::before, *::after { 
@@ -8,32 +7,32 @@ export const GlobalStyle = createGlobalStyle`
   }
   html {
     font-weight: 400;
-    colour: ${({theme}) => theme.colours.newBlack};
+    colour: ${({ theme }) => theme.colours.newBlack};
     font-size: 1rem;
     line-height: 1.3rem;
   }
   
   body{
-    font-family: ${({theme}) => theme.fontFamilies.body};
+    font-family: ${({ theme }) => theme.fontFamilies.body};
 
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: ${({theme}) => theme.fontFamilies.heading};
+    font-family: ${({ theme }) => theme.fontFamilies.heading};
     margin: 0 0 0.3rem;
     // color: ${({ theme }) => theme.colours.desertSand};
   }
 
    p {
-    font-family: ${({theme}) => theme.fontFamilies.paragraph};
+    font-family: ${({ theme }) => theme.fontFamilies.paragraph};
     margin: 0 0 5px;
   }
 
   p.cursive{
-    font-family: ${({theme}) => theme.fontFamilies.cursive};
+    font-family: ${({ theme }) => theme.fontFamilies.cursive};
     line-height: 1.9rem;
     padding: 0 2rem;
   }
   input {
       color: inherit;
     }
-`
+`;
