@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
 import {
-  Top,
   StyledContainer,
   Header,
   headerSpringProps,
@@ -10,8 +9,6 @@ import { Button } from "../Style/Button";
 import { Link } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 import Icon from "../Style/Icon";
-
-import Border from "../Style/Highlighter";
 
 type Props = {};
 
@@ -26,14 +23,12 @@ export function Home(props: Props): JSX.Element {
       </Header>
       <StyledContainer maxWidth="md">
         <Body>
-          {/* <Border> */}
           <StyledLink to="/bio">
             <Button label="Auto-Biography" />
           </StyledLink>
           <StyledLink to="/portfolio">
             <Button label="Portfolio" />
           </StyledLink>
-          {/* </Border> */}
         </Body>
       </StyledContainer>
     </>
@@ -58,6 +53,3 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-const H1 = styled(animated.h1)`
-  // color: ${({ theme }) => theme.colours.newBlack};
-`;

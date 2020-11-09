@@ -19,9 +19,6 @@ export default Icon;
 const StyledIcon = styled(MaterialIcon)<{ colour?: string }>`
   color: ${({ theme, colour }) =>
     colour ? theme.colours[colour] : theme.colours.desertSand};
-  // font-size: 2rem !important;
-
-  // height: 1em;
 `;
 const Container = styled.div`
   display: flex;

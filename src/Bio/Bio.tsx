@@ -18,9 +18,7 @@ export function Bio(props: Props): JSX.Element {
   const [canClick, setCanClick] = useState<boolean>(true);
   const {
     transform,
-    //  opacity
   } = useSpring({
-    // opacity: flipped ? 1 : 0,
     transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
     config: { mass: 5, tension: 900, friction: 100 },
   });
@@ -86,15 +84,9 @@ export function Bio(props: Props): JSX.Element {
             <TextContainer
               style={{ transform: rotateContainer() }}
               flipped={flipped ? 1 : 0}
-              // style={{ opacity: interpolate(opacity,(o=> 1-o)), transform }}
             >
               {Text()}
             </TextContainer>
-            {/* <TextContainer
-              style={{ opacity, transform: transform.interpolate(t => `${t} rotateX(180deg)`) }}
-            >
-              Your Mum
-          </TextContainer> */}
           </FlipContainer>
         </Body>
       </StyledContainer>
@@ -110,7 +102,6 @@ const FlipContainer = styled.div`
 const TextContainer = styled(animated.div)<{ flipped: number }>`
   color: ${({ flipped }) => (flipped === 1 ? "#fff" : `#fff`)};
   padding: 24px;
-  // background-color: black;
   background: ${({ theme, flipped }) =>
     flipped === 1
       ? `url(${Dashwund}), black`
@@ -119,7 +110,6 @@ const TextContainer = styled(animated.div)<{ flipped: number }>`
   background-repeat: ${({ flipped }) =>
     flipped === 1 ? "no-repeat" : "repeat"};
   background-position: center;
-  // position: absolute;
   min-height: 200px;
   box-shadow: ${({ theme }) => theme.boxShadows[0]};
   &:hover {
@@ -136,5 +126,4 @@ const H4 = styled.h2`
   && {
     color: ${({ theme }) => theme.colours.honeydew};
   }
-  // margin: 0 2rem 0 0.5em;
 `;
