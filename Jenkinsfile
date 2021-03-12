@@ -1,8 +1,18 @@
 pipeline {
     agent any
-
+    triggers { 
+        cron('H/15 * * * *') 
+        }
+    tools {
+        yarn
+    }
     stages {
         stage("build"){
+            when {
+                expression {
+                    CODE_CHANGES == true
+                }
+            }
             steps {
                 echo 'start building ...'
                 sh 'yarn install'
@@ -11,6 +21,11 @@ pipeline {
         }
 
         stage("test"){
+            when {
+                expression {
+                    BRANCH_NAME == 'dev' || BRANCH_NAME == 'master' 
+                }
+            }
             steps {
                 echo 'start testing ...'
                 sh 'yarn start'
