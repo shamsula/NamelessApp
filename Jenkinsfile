@@ -5,6 +5,11 @@ pipeline {
         }
     stages {
         stage("build"){
+            when {
+                expression {
+                    BRANCH_NAME != 'master' 
+                }
+            }
             steps {
                 echo 'start building ...'
                 sh 'yarn install'
@@ -13,12 +18,7 @@ pipeline {
             }
         }
 
-        stage("test"){
-            when {
-                expression {
-                    // BRANCH_NAME == 'dev' || BRANCH_NAME == 'fail-branch' 
-                }
-            }
+        stage("test"){            
             steps {
                 echo 'start testing ...'
                 sh 'yarn test --watchAll=false'
