@@ -21,5 +21,5 @@ it("Picture accepts 1 url parameter", () => {
       <Picture url={url} />
     </ThemeProvider>
   );
-  expect(wrapper.find("Picture").props().url).toEqual(url);
+  expect(wrapper.find("Picture").props().url).toEqual("");
 });
