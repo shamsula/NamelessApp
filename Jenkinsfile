@@ -21,7 +21,7 @@ pipeline {
             }
             steps {
                 echo 'start testing ...'
-                sh 'yarn test'
+                sh 'yarn test --watchAll=false'
                 echo 'all tests have pased..'
             }
         }
