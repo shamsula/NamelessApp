@@ -8,6 +8,7 @@ pipeline {
             steps {
                 echo 'start building ...'
                 sh 'yarn install'
+                sh 'yarn start'
                 echo 'done building.'
             }
         }
@@ -20,15 +21,15 @@ pipeline {
             }
             steps {
                 echo 'start testing ...'
-                sh 'yarn start'
-                echo 'done testing.'
+                sh 'yarn test'
+                echo 'all tests have pased..'
             }
         }
 
         stage("deploy"){
             steps {
                 echo 'start deploying...'
-                sh 'yarn run build'
+                // sh 'yarn run build'
                 echo 'finished deploying.'
             }
         }
