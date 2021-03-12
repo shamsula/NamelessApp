@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import Spinner from "./Style/Spinner";
 import { Container } from "@material-ui/core";
 import Footer from "./TopStyle/Footer";
+import { ProgressCircle } from "./Style/ProgressCircle";
 
 function App() {
   const springProps = useSpring({
@@ -31,6 +32,7 @@ function App() {
       <Top>
         <SuperHeader maxWidth="md">
           <Spinner colour="orangePeel" />
+          {/* <ProgressCircle percentage={0.4} color="orangePeel"/> */}
         </SuperHeader>
         <Switch>
           <Route exact path="/">
