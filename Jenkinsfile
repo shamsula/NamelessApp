@@ -3,9 +3,6 @@ pipeline {
     triggers { 
         cron('H/15 * * * *') 
         }
-    tools {
-        yarn
-    }
     stages {
         stage("build"){
             when {
