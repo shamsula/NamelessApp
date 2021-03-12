@@ -5,7 +5,6 @@ pipeline {
         stage("build"){
             steps {
                 echo 'start building ...'
-                sh 'npm install yarn'
                 sh 'yarn install'
                 echo 'done building.'
             }
