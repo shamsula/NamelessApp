@@ -2,26 +2,7 @@ import styled, { keyframes } from "styled-components/macro";
 import { Container } from "@material-ui/core";
 import { animated } from "react-spring";
 
-export const aberration = keyframes`
-0% {
-  text-shadow:1px 1px 0px #f0f, -1px -1px 0 #0ff;
-}
-33% {
-  text-shadow:2px 3px 0px #f0f, -3px -2px 0 #0ff;
-}
-66% {
-   text-shadow:-1px -1px 0px #f0f, 1px 1px 0 #0ff;
-}
-to {
-  text-shadow:2px 1px 0px #f0f, -1px -2px 0 #0ff;
-}
-`;
 
-export const Top = styled.main`
-  position: relative;
-  padding: 1.6rem;
-  width: 100%;
-`;
 export const StyledContainer = styled(Container)<{ colour?: string }>`
   background: ${({ theme, colour }) =>
     colour ? colour : theme.colours.platinum};
@@ -69,3 +50,25 @@ export const headerSpringProps = {
     duration: 1000,
   },
 };
+
+// @ts-ignore
+export const aberration = keyframes`
+0% {
+  text-shadow:1px 1px 0px #f0f, -1px -1px 0 #0ff;
+}
+33% {
+  text-shadow:2px 3px 0px #f0f, -3px -2px 0 #0ff;
+}
+66% {
+   text-shadow:-1px -1px 0px #f0f, 1px 1px 0 #0ff;
+}
+to {
+  text-shadow:2px 1px 0px #f0f, -1px -2px 0 #0ff;
+}
+`;
+
+export const Top = styled.main`
+  position: relative;
+  padding: 1.6rem;
+  width: 100%;
+`;
