@@ -4,7 +4,7 @@ module.exports = {
     '@babel/preset-react',
     "@babel/preset-typescript",
   ],
-  //   plugins: ['@babel-plugin-macros']
+    plugins: ['macros'],
   // presets: [
   //     ['@babel/preset-env', {modules: isTest ? 'commonjs' : false}],
   //     '@babel/preset-react',
