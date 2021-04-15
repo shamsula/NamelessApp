@@ -5,6 +5,7 @@ import { useSpring, animated, interpolate } from "react-spring";
 type Props = {
   // name?: string;
   url: string;
+  hasMargin: boolean;
 };
 const calc = (x: number, y: number) => [
   -(y - window.innerHeight / 2) / 150,
@@ -12,7 +13,7 @@ const calc = (x: number, y: number) => [
   1.1,
 ];
 
-export function Picture({ url }: Props): JSX.Element {
+export function Picture({ url, hasMargin = true }: Props): JSX.Element {
   const [props, set] = useSpring(() => ({
     xys: [0, 0, 1],
     config: { mass: 5, tension: 350, friction: 40 },
@@ -23,6 +24,7 @@ export function Picture({ url }: Props): JSX.Element {
       onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
       url={url}
+      margin={hasMargin ? "10rem" : "0"}
       style={{
         // @ts-ignore
         transform: interpolate(props.xys, (x, y, s) => {
@@ -35,11 +37,12 @@ export function Picture({ url }: Props): JSX.Element {
 
 export default Picture;
 
-const PictureCanvas = styled(animated.div)<{ url: string }>`
+const PictureCanvas = styled(animated.div)<{ url: string; margin: string }>`
   //   margin: 1.2rem 2rem;
-  margin: 10rem;
+  margin: ${({ margin }) => `${margin}`};
   background: ${({ url }) => `url(${url}), black`};
-  background-size: 100% auto;
+  background-size: auto 100%;
+  // background-size: 100% auto;
   background-position: center;
   background-repeat: no-repeat;
   min-height: 500px;
