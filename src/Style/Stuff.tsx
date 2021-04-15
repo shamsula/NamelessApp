@@ -2,7 +2,6 @@ import styled, { keyframes } from "styled-components/macro";
 import { Container } from "@material-ui/core";
 import { animated } from "react-spring";
 
-
 export const StyledContainer = styled(Container)<{ colour?: string }>`
   background: ${({ theme, colour }) =>
     colour ? colour : theme.colours.platinum};
@@ -32,6 +31,18 @@ export const Body = styled.div`
   border: 1px solid ${({ theme }) => theme.colours.quickSilver};
   border-radius: 4px;
   margin-top: 12px;
+`;
+
+export const Button = styled.button`
+  display: flex;
+  justify-content: flex-end;
+  text-decoration: none;
+  color: ${({ theme }) => theme.colours.orangePeel};
+  margin-bottom: 12px;
+  text-shadow: ${({ theme }) => theme.textShadow[0]};
+  &:hover {
+    background-color: ${({ theme }) => theme.colours.darkGrey};
+  }
 `;
 
 export const headerSpringProps = {

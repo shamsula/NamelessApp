@@ -1,10 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import {
-  StyledContainer,
-  Header,
-  headerSpringProps,
-} from "../Style/Stuff";
+import { StyledContainer, Header, headerSpringProps } from "../Style/Stuff";
 import { Button } from "../Style/Button";
 import { Link } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
@@ -29,6 +25,9 @@ export function Home(props: Props): JSX.Element {
           <StyledLink to="/portfolio">
             <Button label="Portfolio" />
           </StyledLink>
+          <StyledLink to="/inspire">
+            <Button label="Inspire Me" />
+          </StyledLink>
         </Body>
       </StyledContainer>
     </>
@@ -52,4 +51,3 @@ const StyledLink = styled(Link)`
   justify-content: center;
   text-decoration: none;
 `;
-

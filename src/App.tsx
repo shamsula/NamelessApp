@@ -13,6 +13,7 @@ import Spinner from "./Style/Spinner";
 import { Container } from "@material-ui/core";
 import Footer from "./TopStyle/Footer";
 import { ProgressCircle } from "./Style/ProgressCircle";
+import { Inspire } from "./Inspire/Inspire";
 
 function App() {
   const springProps = useSpring({
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route path="/portfolio">
             <Portfolio />
+          </Route>
+          <Route path="/inspire">
+            <Inspire />
           </Route>
           <Redirect to="/" />
         </Switch>
