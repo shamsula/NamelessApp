@@ -24,6 +24,7 @@ export function Picture({ url }: Props): JSX.Element {
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
       url={url}
       style={{
+        // @ts-ignore
         transform: interpolate(props.xys, (x, y, s) => {
           return `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
         }),

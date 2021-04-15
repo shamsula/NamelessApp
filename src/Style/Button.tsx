@@ -25,6 +25,7 @@ export function Button({ label, colour }: Props): JSX.Element {
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
       // style={{ transform: props.xys.interpolate(trans)}}
       style={{
+        // @ts-ignore
         transform: interpolate(props.xys, (x, y, s) => {
           return `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
         }),
