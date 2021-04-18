@@ -37,17 +37,25 @@ export function Home(props: Props): JSX.Element {
 export default Home;
 
 const Body = styled.div`
-  padding: 25px;
+  padding: 40px 15px;
   min-height: 75vh;
   background: ${({ theme }) => theme.colours.honeyDew};
   border: 1px solid ${({ theme }) => theme.colours.quickSilver};
   border-radius: 4px;
   margin-top: 12px;
+
+  ${({ theme }) => `${theme.media.tablet} {
+    padding: 40px 25px;
+    display: grid;
+    grid-gap: 20px;
+    }
+  `}
 `;
 
 const StyledLink = styled(Link)`
-  margin: 2.6rem 0;
   display: flex;
   justify-content: center;
   text-decoration: none;
+  height: 80px;
+  margin-bottom: 15px;
 `;

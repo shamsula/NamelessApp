@@ -10,9 +10,8 @@ import Home from "./Home/Home";
 import { Top } from "./Style/Stuff";
 import { Link } from "react-router-dom";
 import Spinner from "./Style/Spinner";
-import { Container } from "@material-ui/core";
+import { Container, Hidden } from "@material-ui/core";
 import Footer from "./TopStyle/Footer";
-import { ProgressCircle } from "./Style/ProgressCircle";
 import { Inspire } from "./Inspire/Inspire";
 
 function App() {
@@ -31,10 +30,12 @@ function App() {
   return (
     <HomeCont style={springProps}>
       <Top>
-        <SuperHeader maxWidth="md">
-          <Spinner colour="orangePeel" />
-          {/* <ProgressCircle percentage={0.4} color="orangePeel"/> */}
-        </SuperHeader>
+        <Hidden mdDown>
+          <SuperHeader maxWidth="md">
+            <Spinner colour="orangePeel" />
+          </SuperHeader>
+        </Hidden>
+
         <Switch>
           <Route exact path="/">
             <Home />

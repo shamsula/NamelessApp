@@ -14,7 +14,7 @@ type Props = {
 };
 export function Button({ label, colour }: Props): JSX.Element {
   const [props, set] = useSpring(() => ({
-    xys: [0, 0, 1],
+    xys: [27, 0, 1],
     config: { mass: 5, tension: 350, friction: 40 },
   }));
 
@@ -22,7 +22,7 @@ export function Button({ label, colour }: Props): JSX.Element {
     <StyledButton
       className="card"
       onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
-      onMouseLeave={() => set({ xys: [0, 0, 1] })}
+      onMouseLeave={() => set({ xys: [27, 0, 1] })}
       // style={{ transform: props.xys.interpolate(trans)}}
       style={{
         // @ts-ignore
@@ -38,6 +38,8 @@ export function Button({ label, colour }: Props): JSX.Element {
 }
 
 const StyledButton = styled(animated.button)<{ colour?: string }>`
+  width: 100%;
+  max-width: 500px;
   text-decoration: none;
   border: none;
   background-color: ${({ theme, colour }) =>

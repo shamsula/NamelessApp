@@ -80,6 +80,10 @@ to {
 
 export const Top = styled.main`
   position: relative;
-  padding: 1.6rem;
   width: 100%;
+
+  ${({ theme }) => `${theme.media.desktop} {
+  padding: 1.6rem;
+    }
+  `}
 `;

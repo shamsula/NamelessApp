@@ -24,7 +24,7 @@ export function Picture({ url, hasMargin = true }: Props): JSX.Element {
       onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
       url={url}
-      margin={hasMargin ? "10rem" : "0"}
+      margin={hasMargin ? "5rem" : "0"}
       style={{
         // @ts-ignore
         transform: interpolate(props.xys, (x, y, s) => {
@@ -39,7 +39,6 @@ export default Picture;
 
 const PictureCanvas = styled(animated.div)<{ url: string; margin: string }>`
   //   margin: 1.2rem 2rem;
-  margin: ${({ margin }) => `${margin}`};
   background: ${({ url }) => `url(${url}), black`};
   background-size: auto 100%;
   // background-size: 100% auto;
@@ -47,7 +46,14 @@ const PictureCanvas = styled(animated.div)<{ url: string; margin: string }>`
   background-repeat: no-repeat;
   min-height: 500px;
 
+  margin-bottom: 15px;
+
   &:hover {
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   }
+
+  ${({ theme, margin }) => `${theme.media.tablet} {
+    margin: ${margin};
+    }
+  `}
 `;
