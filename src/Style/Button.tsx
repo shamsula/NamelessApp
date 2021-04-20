@@ -14,15 +14,15 @@ type Props = {
 };
 export function Button({ label, colour }: Props): JSX.Element {
   const [props, set] = useSpring(() => ({
-    xys: [27, 0, 1],
-    config: { mass: 5, tension: 350, friction: 40 },
+    xys: [27, 1, 1],
+    config: { mass: 5, tension: 350, friction: 140 },
   }));
 
   return (
     <StyledButton
       className="card"
       onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
-      onMouseLeave={() => set({ xys: [27, 0, 1] })}
+      onMouseLeave={() => set({ xys: [27, 1, 1] })}
       // style={{ transform: props.xys.interpolate(trans)}}
       style={{
         // @ts-ignore

@@ -38,7 +38,7 @@ export default Home;
 
 const Body = styled.div`
   padding: 40px 15px;
-  min-height: 75vh;
+  min-height: 500px;
   background: ${({ theme }) => theme.colours.honeyDew};
   border: 1px solid ${({ theme }) => theme.colours.quickSilver};
   border-radius: 4px;

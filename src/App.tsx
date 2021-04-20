@@ -76,7 +76,7 @@ const StyledLink = styled(Link)`
   border-radius: 4px;
   padding: 0.3rem 1rem;
   &:hover {
-    background-color: ${({ theme }) => theme.colours.darkGrey};
+    background-color: transparent;
   }
 `;
 const SuperHeader = styled(Container)`
