@@ -8,14 +8,24 @@ import { ThemeProvider } from "styled-components/macro";
 
 import { theme } from "./Style/theme";
 import { GlobalStyle } from "./Style/GlobalStyle";
+import { Provider } from "react-redux";
+import { reducer } from "./store/store";
+import { getDefaultMiddleware, configureStore } from "@reduxjs/toolkit";
+
+const store = configureStore({
+  reducer,
+  middleware: [...getDefaultMiddleware()],
+});
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter basename="/">
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <App />
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <App />
+        </ThemeProvider>
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
