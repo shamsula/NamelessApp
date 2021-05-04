@@ -12,9 +12,11 @@ import Dashwund from "../img/dashwund.jpg";
 import Texture from "../img/paper.png";
 import Back from "../Style/StyledBack";
 
-type Props = {};
+type Props = {
+  isFlipped?: boolean;
+};
 export function Bio(props: Props): JSX.Element {
-  const [flipped, set] = useState<boolean>(false);
+  const [flipped, set] = useState<boolean>(props.isFlipped ?? false);
   const [canClick, setCanClick] = useState<boolean>(true);
   const {
     transform,
@@ -78,7 +80,7 @@ export function Bio(props: Props): JSX.Element {
         <animated.h1 style={headerProps}>Biography</animated.h1>
       </Header>
       <StyledContainer maxWidth="md">
-        <Body onClick={handleOnClick}>
+        <Body onClick={handleOnClick} role="clickable">
           <Back />
           <FlipContainer>
             <TextContainer

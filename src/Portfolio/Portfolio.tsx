@@ -16,7 +16,9 @@ export function Portfolio({}: Props): JSX.Element {
   const headerProps = useSpring(headerSpringProps);
 
   const renderImgs = () =>
-    data.images.map((img) => <Picture url={img.url} key={`${img.url}`} />);
+    data.images.map((img) => (
+      <Picture url={img.url} key={`${img.url}`} hasMargin={true} />
+    ));
   return (
     <>
       <Header maxWidth="md">
@@ -36,5 +38,5 @@ export function Portfolio({}: Props): JSX.Element {
 export default Portfolio;
 
 const ImagesContainer = styled.div`
-  dispay: flex;
+  display: grid;
 `;

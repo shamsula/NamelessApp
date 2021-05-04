@@ -6,6 +6,13 @@ import {
 import { aberration } from "./Stuff";
 // import 'normalize.css'
 
+const customMedia = (maxWidth: number) => `@media (min-width: ${maxWidth}px)`;
+
+const media = {
+  desktop: customMedia(922),
+  tablet: customMedia(768),
+  phone: customMedia(576),
+};
 enum Colours {
   // shades of black
   newBlack = "#1c1c1c",
@@ -72,6 +79,7 @@ export interface Theme extends DefaultTheme {
   fontFamilies: typeof FontFamilies;
   animation: FlattenSimpleInterpolation[];
   linearGradient: string;
+  media: Record<keyof typeof media, string>;
 }
 
 const aberrationAnimation = css`
@@ -96,4 +104,5 @@ export const theme: Theme = {
   animation: [aberrationAnimation],
   linearGradient:
     "linear-gradient(309deg, rgba(5,102,141,1) 0%, rgba(2,128,144,1) 32%, rgba(2,195,154,1) 100%)",
+  media,
 };

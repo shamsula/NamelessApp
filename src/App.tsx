@@ -10,8 +10,9 @@ import Home from "./Home/Home";
 import { Top } from "./Style/Stuff";
 import { Link } from "react-router-dom";
 import Spinner from "./Style/Spinner";
-import { Container } from "@material-ui/core";
+import { Container, Hidden } from "@material-ui/core";
 import Footer from "./TopStyle/Footer";
+import { Inspire } from "./Inspire/Inspire";
 
 function App() {
   const springProps = useSpring({
@@ -29,9 +30,12 @@ function App() {
   return (
     <HomeCont style={springProps}>
       <Top>
-        <SuperHeader maxWidth="md">
-          <Spinner colour="orangePeel" />
-        </SuperHeader>
+        <Hidden mdDown>
+          <SuperHeader maxWidth="md">
+            <Spinner colour="orangePeel" />
+          </SuperHeader>
+        </Hidden>
+
         <Switch>
           <Route exact path="/">
             <Home />
@@ -41,6 +45,9 @@ function App() {
           </Route>
           <Route path="/portfolio">
             <Portfolio />
+          </Route>
+          <Route path="/inspire">
+            <Inspire />
           </Route>
           <Redirect to="/" />
         </Switch>
@@ -69,7 +76,7 @@ const StyledLink = styled(Link)`
   border-radius: 4px;
   padding: 0.3rem 1rem;
   &:hover {
-    background-color: ${({ theme }) => theme.colours.darkGrey};
+    background-color: transparent;
   }
 `;
 const SuperHeader = styled(Container)`
