@@ -9,22 +9,12 @@ import {
   StyledContainer,
 } from "../Style/Stuff";
 import Back from "../Style/StyledBack";
-import thumbsUp from "../img/katya-austin-4Vg6ez9jaec-unsplash.jpg";
 import { Button } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { fetchQuote } from "../store/spring";
 
-const blankQuote = {
-  id: "",
-  title: "",
-  author: "Katya Austin", // credits for the thumbsUp pic
-  media: thumbsUp,
-  url: "",
-  cat: "",
-};
 export function Inspire(): JSX.Element {
-  // const [quote, setQoute] = useState<Quote>(blankQuote);
   const headerProps = useSpring(headerSpringProps);
 
   const dispatch = useDispatch();

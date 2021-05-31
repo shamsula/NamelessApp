@@ -22,7 +22,7 @@ export function Portfolio({}: Props): JSX.Element {
   return (
     <>
       <Header maxWidth="md">
-        <animated.h1 style={headerProps}>Portfolio</animated.h1>
+        <animated.h1 style={headerProps}>Art Portfolio</animated.h1>
       </Header>
 
       <StyledContainer maxWidth="md">

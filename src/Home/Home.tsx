@@ -23,7 +23,7 @@ export function Home(props: Props): JSX.Element {
             <Button label="Auto-Biography" />
           </StyledLink>
           <StyledLink to="/portfolio">
-            <Button label="Portfolio" />
+            <Button label="Art Portfolio" />
           </StyledLink>
           <StyledLink to="/inspire">
             <Button label="Inspire Me" />

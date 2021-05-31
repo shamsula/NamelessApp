@@ -29,8 +29,10 @@ export const GlobalStyle = createGlobalStyle`
 
   p.cursive{
     font-family: ${({ theme }) => theme.fontFamilies.cursive};
-    line-height: 1.9rem;
+    line-height: 2.4rem;
     padding: 0 2rem;
+    font-size: 1.6rem;
+    font-weight: 800;
   }
   input {
       color: inherit;
