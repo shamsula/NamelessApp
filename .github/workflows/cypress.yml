@@ -10,3 +10,5 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           start: npm start
+        env:
+          REACT_APP_QUOTE_KEY: ${{secrets.REACT_APP_QUOTE_KEY}}
