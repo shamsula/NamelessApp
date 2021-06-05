@@ -37,7 +37,7 @@ export function Bio(props: Props): JSX.Element {
     if (!flipped && canClick) {
       return (
         <>
-          <SubHeadingCont>
+          <SubHeadingCont data-test="front-side">
             <H4>Intro</H4>
           </SubHeadingCont>
           <p className="cursive">
@@ -59,7 +59,7 @@ export function Bio(props: Props): JSX.Element {
     } else {
       return (
         <>
-          <SubHeadingCont>
+          <SubHeadingCont data-test="flip-side">
             <H4>Flip Side</H4>
           </SubHeadingCont>
           <p className="cursive">Fin.</p>
@@ -79,7 +79,9 @@ export function Bio(props: Props): JSX.Element {
   return (
     <>
       <Header maxWidth="md">
-        <animated.h1 style={headerProps}>Biography</animated.h1>
+        <animated.h1 style={headerProps} data-test="header-bio">
+          Biography
+        </animated.h1>
       </Header>
       <StyledContainer maxWidth="md">
         <Body onClick={handleOnClick} role="clickable">
@@ -88,6 +90,7 @@ export function Bio(props: Props): JSX.Element {
             <TextContainer
               style={{ transform: rotateContainer() }}
               flipped={flipped ? 1 : 0}
+              data-test="bio-text"
             >
               {Text()}
             </TextContainer>

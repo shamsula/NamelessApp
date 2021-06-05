@@ -43,7 +43,9 @@ export function Portfolio(): JSX.Element {
           {isViewing3D ? (
             <Port3D />
           ) : (
-            <ImagesContainer>{renderImgs()}</ImagesContainer>
+            <ImagesContainer data-test="image-container">
+              {renderImgs()}
+            </ImagesContainer>
           )}
         </Body>
       </StyledContainer>

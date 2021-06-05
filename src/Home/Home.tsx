@@ -18,7 +18,7 @@ export function Home(props: Props): JSX.Element {
         <animated.h1 style={springProps}>Home</animated.h1>
       </Header>
       <StyledContainer maxWidth="md">
-        <Body>
+        <Body data-test="body-home">
           <StyledLink to="/bio">
             <Button label="Auto-Biography" />
           </StyledLink>

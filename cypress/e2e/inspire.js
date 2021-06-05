@@ -1,7 +1,7 @@
 describe("renders the home page", () => {
   it("renders the picture plus default", () => {
     cy.visit("/inspire");
-    cy.get(".Picture__PictureCanvas-sc-1fp4lcf-0").should("exist");
+    cy.getBySel("canvas-picture").should("exist");
     cy.findByText(/you can do this/i).should("exist");
   });
   it("Daily Quote button working", () => {
