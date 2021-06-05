@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/macro";
 import {
   StyledContainer,
@@ -7,18 +7,25 @@ import {
   Body,
 } from "../Style/Stuff";
 import { useSpring, animated } from "react-spring";
+import { Button } from "@material-ui/core";
+
 import data from "../Data/data.json";
 import Back from "../Style/StyledBack";
 import Picture from "../Style/Picture";
+import Port3D from "./AnimatedPortfolio";
 
-type Props = {};
-export function Portfolio({}: Props): JSX.Element {
+export function Portfolio(): JSX.Element {
   const headerProps = useSpring(headerSpringProps);
+  const [isViewing3D, setIsViewing3d] = useState<boolean>(false);
 
   const renderImgs = () =>
     data.images.map((img) => (
       <Picture url={img.url} key={`${img.url}`} hasMargin={true} />
     ));
+
+  const onClick = () => {
+    setIsViewing3d(!isViewing3D);
+  };
   return (
     <>
       <Header maxWidth="md">
@@ -28,7 +35,16 @@ export function Portfolio({}: Props): JSX.Element {
       <StyledContainer maxWidth="md">
         <Body>
           <Back />
-          <ImagesContainer>{renderImgs()}</ImagesContainer>
+          <ButtonContainer>
+            <Button onClick={onClick}>
+              <H3>View {isViewing3D ? "Static" : "Animated"} Content</H3>
+            </Button>
+          </ButtonContainer>
+          {isViewing3D ? (
+            <Port3D />
+          ) : (
+            <ImagesContainer>{renderImgs()}</ImagesContainer>
+          )}
         </Body>
       </StyledContainer>
     </>
@@ -39,4 +55,12 @@ export default Portfolio;
 
 const ImagesContainer = styled.div`
   display: grid;
+`;
+const H3 = styled.h3`
+  color: ${({ theme }) => theme.colours.orangePeel};
+`;
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
 `;
