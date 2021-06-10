@@ -75,7 +75,7 @@
     "pretty-quick": "^3.1.0",
     "react-p5-wrapper": "^2.4.0",
     "serve": "^11.3.2",
-    "start-server-and-test": "^1.12.1",
+    "start-server-and-test": "^1.12.5",
     "typescript": "^4.0.3"
   },
   "husky": {

@@ -36,7 +36,7 @@ export function Portfolio(): JSX.Element {
         <Body>
           <Back />
           <ButtonContainer>
-            <Button onClick={onClick}>
+            <Button onClick={onClick} data-test="toggle-button">
               <H3>View {isViewing3D ? "Static" : "Animated"} Content</H3>
             </Button>
           </ButtonContainer>
