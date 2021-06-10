@@ -25,7 +25,11 @@ export default function AnimatedPortfolio(): JSX.Element {
     return <P5Wrapper sketch={sketch} dimensions={dimensions} />;
   }, [dimensions]);
 
-  return <P5Container ref={P5Div}>{renderMatrix}</P5Container>;
+  return (
+    <P5Container ref={P5Div} data-test="p5-wrapper">
+      {renderMatrix}
+    </P5Container>
+  );
 }
 
 const P5Container = styled.div`
