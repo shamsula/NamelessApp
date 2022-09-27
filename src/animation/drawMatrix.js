@@ -2,7 +2,6 @@
 // with acceleration disabled
 
 function Drop(p) {
-  console.log("your mom");
   this.x = p.random(p.width);
   this.y = p.random(-300, -50);
   this.z = p.random(0, 3);

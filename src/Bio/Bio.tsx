@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import styled from "styled-components/macro";
 import {
   Top,
@@ -25,13 +25,13 @@ export function Bio(props: Props): JSX.Element {
 
   const headerProps = useSpring(headerSpringProps);
 
-  const rotateContainer = () => {
+  const rotateContainer = useCallback(() => {
     if (!flipped && canClick) {
       return transform;
     } else {
       return transform.interpolate((t) => `${t} rotateX(180deg)`);
     }
-  };
+  }, [flipped, canClick, transform]);
 
   const Text = (): JSX.Element => {
     if (!flipped && canClick) {
