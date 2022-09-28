@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.0",
+    "@react-hook/window-size": "^3.1.1",
     "@reduxjs/toolkit": "^1.5.1",
     "normalize.css": "^8.0.1",
     "prettier": "^2.1.2",
@@ -82,5 +83,9 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
+  },
+  "resolutions": {
+    "//": "See https://github.com/facebook/create-react-app/issues/11773",
+    "react-error-overlay": "6.0.9"
   }
 }

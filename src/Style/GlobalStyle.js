@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import breakpoint from "./Common/breakpoints";
 import "normalize.css";
 
 export const GlobalStyle = createGlobalStyle`
@@ -37,4 +38,8 @@ export const GlobalStyle = createGlobalStyle`
   input {
       color: inherit;
     }
+
+  // Breakpoints:
+
+
 `;
