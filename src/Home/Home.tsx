@@ -5,6 +5,7 @@ import { Button } from "../Style/Button";
 import { Link } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 import Icon from "../Style/Icon";
+import breakpoints from "../Style/Common/breakpoints";
 
 type Props = {};
 
@@ -56,6 +57,10 @@ const StyledLink = styled(Link)`
   display: flex;
   justify-content: center;
   text-decoration: none;
-  height: 80px;
+  height: 40px;
   margin-bottom: 15px;
+
+  @media only screen and (min-width: ${breakpoints.size.md}px) {
+    height: 80px;
+  }
 `;
