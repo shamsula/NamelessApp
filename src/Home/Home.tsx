@@ -20,13 +20,13 @@ export function Home(props: Props): JSX.Element {
       </Header>
       <StyledContainer maxWidth="md">
         <Body data-test="body-home">
-          <StyledLink to="/bio">
+          <StyledLink to="/bio" tabIndex={-1}>
             <Button label="Auto-Biography" />
           </StyledLink>
-          <StyledLink to="/portfolio">
+          <StyledLink to="/portfolio" tabIndex={-1}>
             <Button label="Art Portfolio" />
           </StyledLink>
-          <StyledLink to="/inspire">
+          <StyledLink to="/inspire" tabIndex={-1}>
             <Button label="Inspire Me" />
           </StyledLink>
         </Body>

@@ -41,11 +41,12 @@ export function Button({ label, colour }: Props): JSX.Element {
             }),
           }}
           colour={colour}
+          role="button"
         >
           {label}
         </StyledAnimatedButton>
       ) : (
-        <StyledButton className="card" colour={colour}>
+        <StyledButton className="card" colour={colour} role="button">
           {label}
         </StyledButton>
       )}
