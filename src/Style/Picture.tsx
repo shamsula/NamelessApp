@@ -45,6 +45,7 @@ const PictureCanvas = styled(animated.div)<{ url: string; margin: string }>`
   // background-size: 100% auto;
   background-position: center;
   background-repeat: no-repeat;
+  width: 100%;
   min-height: 500px;
 
   margin-bottom: 15px;
