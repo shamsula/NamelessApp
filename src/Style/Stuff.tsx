@@ -1,3 +1,4 @@
+import React from "react";
 import styled, { keyframes } from "styled-components/macro";
 import { Container } from "@material-ui/core";
 import { animated } from "react-spring";
@@ -10,7 +11,7 @@ export const StyledContainer = styled(Container)<{ colour?: string }>`
   padding: 12px;
 `;
 
-export const Header = styled(Container)`
+const HeaderCont = styled(Container)`
   && {
     display: flex;
     align-items: center;
@@ -23,6 +24,11 @@ export const Header = styled(Container)`
   background: ${({ theme }) => theme.colours.honeyDew};
   border-bottom: solid 2px ${({ theme }) => theme.colours.quickSilver};
 `;
+
+export function Header(props: any): JSX.Element {
+  return <HeaderCont {...props} data-test="header-page" />;
+}
+
 export const Body = styled.div`
   padding: 25px;
   min-height: 500px;

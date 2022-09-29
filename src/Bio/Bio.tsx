@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import styled from "styled-components/macro";
 import {
   Top,
@@ -7,7 +7,7 @@ import {
   headerSpringProps,
   Body,
 } from "../Style/Stuff";
-import { useSpring, animated, interpolate } from "react-spring";
+import { useSpring, animated } from "react-spring";
 import Dashwund from "../img/dashwund.jpg";
 import Texture from "../img/paper.png";
 import Back from "../Style/StyledBack";
@@ -18,36 +18,38 @@ type Props = {
 export function Bio(props: Props): JSX.Element {
   const [flipped, set] = useState<boolean>(props.isFlipped ?? false);
   const [canClick, setCanClick] = useState<boolean>(true);
-  const {
-    transform,
-  } = useSpring({
+  const { transform } = useSpring({
     transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
     config: { mass: 5, tension: 900, friction: 100 },
   });
 
   const headerProps = useSpring(headerSpringProps);
 
-  const rotateContainer = () => {
+  const rotateContainer = useCallback(() => {
     if (!flipped && canClick) {
       return transform;
     } else {
       return transform.interpolate((t) => `${t} rotateX(180deg)`);
     }
-  };
+  }, [flipped, canClick, transform]);
 
   const Text = (): JSX.Element => {
     if (!flipped && canClick) {
       return (
         <>
-          <SubHeadingCont>
+          <SubHeadingCont data-test="front-side">
             <H4>Intro</H4>
           </SubHeadingCont>
           <p className="cursive">
-            Welcome, this is where I tell my story. It's short and uninspiring,
-            so no need to get all worked up just yet. I'm a Software Developer
-            and I'm currently pursuing life as a video game. Gathering resources
-            and useful hobbies along the path. Are you perhaps interested, in
-            learing more?
+            I'm Limon. Coder by day, Artist by night - I'm leaving my footpring
+            in this world. I've put in quite an effort trying to learn how to
+            code, to only come to a realization that maybe one day none of us
+            will need/want to. I've come to like techniques that make our lives
+            better. Software Engineering, for example will always have a place
+            in my heart. Speaking of heart, I've put some into making this
+            peace. I hope some of you like it, but I predict that as it grows
+            it'll start making less sense. If I'm selling an emotion, it might
+            just be nostalgia.
           </p>
           <p style={{ textAlign: "right" }} className="cursive">
             - Limon
@@ -57,10 +59,10 @@ export function Bio(props: Props): JSX.Element {
     } else {
       return (
         <>
-          <SubHeadingCont>
+          <SubHeadingCont data-test="flip-side">
             <H4>Flip Side</H4>
           </SubHeadingCont>
-          <p className="cursive">End of Line, Pal.</p>
+          <p className="cursive">Fin.</p>
         </>
       );
     }
@@ -77,7 +79,9 @@ export function Bio(props: Props): JSX.Element {
   return (
     <>
       <Header maxWidth="md">
-        <animated.h1 style={headerProps}>Biography</animated.h1>
+        <animated.h1 style={headerProps} data-test="header-bio">
+          Biography
+        </animated.h1>
       </Header>
       <StyledContainer maxWidth="md">
         <Body onClick={handleOnClick} role="clickable">
@@ -86,6 +90,7 @@ export function Bio(props: Props): JSX.Element {
             <TextContainer
               style={{ transform: rotateContainer() }}
               flipped={flipped ? 1 : 0}
+              data-test="bio-text"
             >
               {Text()}
             </TextContainer>
@@ -112,7 +117,7 @@ const TextContainer = styled(animated.div)<{ flipped: number }>`
   background-repeat: ${({ flipped }) =>
     flipped === 1 ? "no-repeat" : "repeat"};
   background-position: center;
-  min-height: 200px;
+  min-height: 419px;
   box-shadow: ${({ theme }) => theme.boxShadows[0]};
   &:hover {
     box-shadow: ${({ theme }) => theme.boxShadows[1]};

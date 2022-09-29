@@ -5,6 +5,7 @@ import { Button } from "../Style/Button";
 import { Link } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 import Icon from "../Style/Icon";
+import breakpoints from "../Style/Common/breakpoints";
 
 type Props = {};
 
@@ -18,14 +19,14 @@ export function Home(props: Props): JSX.Element {
         <animated.h1 style={springProps}>Home</animated.h1>
       </Header>
       <StyledContainer maxWidth="md">
-        <Body>
-          <StyledLink to="/bio">
+        <Body data-test="body-home">
+          <StyledLink to="/bio" tabIndex={-1}>
             <Button label="Auto-Biography" />
           </StyledLink>
-          <StyledLink to="/portfolio">
-            <Button label="Portfolio" />
+          <StyledLink to="/portfolio" tabIndex={-1}>
+            <Button label="Art Portfolio" />
           </StyledLink>
-          <StyledLink to="/inspire">
+          <StyledLink to="/inspire" tabIndex={-1}>
             <Button label="Inspire Me" />
           </StyledLink>
         </Body>
@@ -56,6 +57,10 @@ const StyledLink = styled(Link)`
   display: flex;
   justify-content: center;
   text-decoration: none;
-  height: 80px;
+  height: 40px;
   margin-bottom: 15px;
+
+  @media only screen and (min-width: ${breakpoints.size.md}px) {
+    height: 80px;
+  }
 `;

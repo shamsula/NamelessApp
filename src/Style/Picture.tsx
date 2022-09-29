@@ -31,6 +31,7 @@ export function Picture({ url, hasMargin = true }: Props): JSX.Element {
           return `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
         }),
       }}
+      data-test="canvas-picture"
     />
   );
 }

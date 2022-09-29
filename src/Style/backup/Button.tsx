@@ -6,7 +6,6 @@ import {
   useWindowWidth,
   useWindowHeight,
 } from "@react-hook/window-size";
-import breakpoint from "./Common/breakpoints";
 
 const calc = (x: number, y: number) => [
   -(y - window.innerHeight / 2) / 20,
@@ -20,8 +19,12 @@ type Props = {
 };
 export function Button({ label, colour }: Props): JSX.Element {
   const [width, height] = useWindowSize();
-  const isButtonAnimated: boolean = width >= breakpoint.size.md;
+  const onlyWidth = useWindowWidth();
+  const onlyHeight = useWindowHeight();
 
+  const isButtonAnimated: boolean = width >= 768;
+
+  console.log("size", width, height, onlyWidth, onlyHeight);
   const [props, set] = useSpring(() => ({
     xys: [27, 1, 1],
     config: { mass: 5, tension: 350, friction: 140 },
@@ -34,6 +37,7 @@ export function Button({ label, colour }: Props): JSX.Element {
           className="card"
           onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
           onMouseLeave={() => set({ xys: [27, 1, 1] })}
+          // style={{ transform: props.xys.interpolate(trans)}}
           style={{
             // @ts-ignore
             transform: interpolate(props.xys, (x, y, s) => {
@@ -41,12 +45,11 @@ export function Button({ label, colour }: Props): JSX.Element {
             }),
           }}
           colour={colour}
-          role="button"
         >
           {label}
         </StyledAnimatedButton>
       ) : (
-        <StyledButton className="card" colour={colour} role="button">
+        <StyledButton className="card" colour={colour}>
           {label}
         </StyledButton>
       )}
@@ -61,12 +64,16 @@ const BaseButton = css<{ colour?: string }>`
   border: none;
   background-color: ${({ theme, colour }) =>
     colour ? colour : theme.colours.orangePeel};
-
+  background: radial-gradient(
+    circle closest-side,
+    ${({ theme, colour }) => (colour ? colour : theme.colours.orangePeel)},
+    blue
+  );
   color: ${({ theme }) => theme.colours.honedew};
   padding: 12px 20px;
   text-transform: capitalize;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 4px;
   &:hover {
     text-decoration: none;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -75,18 +82,12 @@ const BaseButton = css<{ colour?: string }>`
   }
 `;
 
-const StyledAnimatedButton = styled(animated.button)<{
-  colour?: string;
-  mousecoordsy?: string;
-  mousecoordsx?: string;
-}>`
+const StyledAnimatedButton = styled(animated.button)`
   ${BaseButton}
   &:hover {
     box-shadow: #fff 0 -1px 4px, #ff0 0 -2px 10px,
       5px 5px 15px 5px rgba(0, 0, 0, 0);
-    transition: box-shadow 0.5s;
   }
-  border-radius: 5px;
 `;
 
 const StyledButton = styled.button<{ colour?: string }>`

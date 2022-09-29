@@ -10,9 +10,10 @@ import Home from "./Home/Home";
 import { Top } from "./Style/Stuff";
 import { Link } from "react-router-dom";
 import Spinner from "./Style/Spinner";
-import { Container, Hidden } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import Footer from "./TopStyle/Footer";
 import { Inspire } from "./Inspire/Inspire";
+import breakpoints from "./Style/Common/breakpoints";
 
 function App() {
   const springProps = useSpring({
@@ -30,11 +31,9 @@ function App() {
   return (
     <HomeCont style={springProps}>
       <Top>
-        <Hidden mdDown>
-          <SuperHeader maxWidth="md">
-            <Spinner colour="orangePeel" />
-          </SuperHeader>
-        </Hidden>
+        <SuperHeader maxWidth="md">
+          <Spinner colour="orangePeel" />
+        </SuperHeader>
 
         <Switch>
           <Route exact path="/">
@@ -83,6 +82,9 @@ const SuperHeader = styled(Container)`
   && {
     display: flex;
     padding: 2px;
+    @media only screen and (max-width: ${breakpoints.size.md}px) {
+      display: none;
+    }
   }
   justify-content: end;
 `;

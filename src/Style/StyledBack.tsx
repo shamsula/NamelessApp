@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 type Props = {};
 export function StyledBack(props: Props): JSX.Element {
   return (
-    <StyledLink to="/">
+    <StyledLink to="/" data-test="styled-back">
       <h3>Back</h3>
     </StyledLink>
   );
