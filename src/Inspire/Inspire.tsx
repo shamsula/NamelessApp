@@ -13,6 +13,8 @@ import { Button } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { fetchQuote } from "../store/spring";
+import { useWindowSize } from "@react-hook/window-size";
+import breakpoint from "../Style/Common/breakpoints";
 
 export function Inspire(): JSX.Element {
   const headerProps = useSpring(headerSpringProps);
@@ -20,14 +22,23 @@ export function Inspire(): JSX.Element {
   const dispatch = useDispatch();
 
   const quote = useSelector((state: RootState) => state.inspire.quote);
+  const [width, height] = useWindowSize();
+  const isAnimationEnabled: boolean = width >= breakpoint.size.md;
 
   const qouteBtn = () => {
     dispatch(fetchQuote());
   };
 
   const renderQoute = useMemo(() => {
-    return <Picture url={quote.media} key={quote.url} hasMargin={false} />;
-  }, [quote]);
+    return (
+      <Picture
+        url={quote.media}
+        key={quote.url}
+        hasMargin={false}
+        isAnimationEnabled={isAnimationEnabled}
+      />
+    );
+  }, [quote, isAnimationEnabled]);
 
   return (
     <>

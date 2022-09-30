@@ -1,7 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components/macro";
 import { Container } from "@material-ui/core";
-import { animated } from "react-spring";
 import Omni from "../img/omnimon.jpg";
 
 export const StyledContainer = styled(Container)<{ colour?: string }>`
@@ -18,6 +17,7 @@ const HeaderCont = styled(Container)`
     justify-content: center;
   }
   text-transform: uppercase;
+  letter-spacing: 10px;
   padding: 24px 4px;
   color: ${({ theme }) => theme.colours.orangePeel};
   text-shadow: ${({ theme }) => theme.textShadow[1]};

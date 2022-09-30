@@ -1,11 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components/macro";
 import { useSpring, animated, interpolate } from "react-spring";
-import {
-  useWindowSize,
-  useWindowWidth,
-  useWindowHeight,
-} from "@react-hook/window-size";
+import { useWindowSize } from "@react-hook/window-size";
 import breakpoint from "./Common/breakpoints";
 
 const calc = (x: number, y: number) => [

@@ -16,28 +16,34 @@ import Port3D from "./AnimatedPortfolio";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./swiper-bundle.min.css";
-import { Navigation } from "swiper";
+import { FreeMode, Navigation, Thumbs } from "swiper";
 
 // icon by icon-small: https://www.flaticon.com/authors/icon-small
 import CarouselNextBtn from "./next-button.svg";
+import { useWindowSize } from "@react-hook/window-size";
+import breakpoint from "../Style/Common/breakpoints";
 
 export function Portfolio(): JSX.Element {
   const headerProps = useSpring(headerSpringProps);
   const [isViewing3D, setIsViewing3d] = useState<boolean>(false);
+  const [thumbsSwiper, setThumbsSwiper] = useState<any>(undefined);
+  const [width, height] = useWindowSize();
+  const isAnimationEnabled: boolean = width >= breakpoint.size.md;
 
-  const renderImgs = () =>
+  const renderImgs = (isThumbs?: boolean) =>
     data.images.map((img) => (
-      <StyledSwiperSlide key={`${img.url}`}>
-        <Picture url={img.url} hasMargin={true} />
+      <StyledSwiperSlide isThumbs={isThumbs} key={`${img.url}`}>
+        <Picture
+          url={img.url}
+          hasMargin={true}
+          isAnimationEnabled={!isThumbs && isAnimationEnabled}
+          isThumbs={isThumbs}
+        />
       </StyledSwiperSlide>
     ));
 
   const onClick = () => {
     setIsViewing3d(!isViewing3D);
-  };
-
-  const paginationOptions: any = {
-    clickable: true, // buggy likely due to spring animation of Picture
   };
 
   return (
@@ -59,13 +65,32 @@ export function Portfolio(): JSX.Element {
           ) : (
             <ImagesContainer data-test="image-container">
               <StyledSwiper
-                navigation={true}
-                modules={[Navigation]}
-                className="mySwiper"
+                // navigation={true}
+                // modules={[Navigation]}
+                // className="mySwiper"
+                // // loop={true}
+                // rewind={true}
+
                 loop={true}
-                pagination={paginationOptions}
+                spaceBetween={10}
+                navigation={true}
+                thumbs={{ swiper: thumbsSwiper }}
+                modules={[FreeMode, Navigation, Thumbs]}
               >
                 {renderImgs()}
+              </StyledSwiper>
+              <StyledSwiper
+                onSwiper={setThumbsSwiper}
+                loop={true}
+                spaceBetween={10}
+                slidesPerView={4}
+                freeMode={true}
+                watchSlidesProgress={true}
+                modules={[FreeMode, Navigation, Thumbs]}
+                className="mySwiper"
+                isThumbs={true}
+              >
+                {renderImgs(true)}
               </StyledSwiper>
             </ImagesContainer>
           )}
@@ -91,9 +116,10 @@ const ButtonContainer = styled.div`
   margin-bottom: 30px;
 `;
 
-const StyledSwiper = styled(Swiper)`
+const StyledSwiper = styled(Swiper)<{ isThumbs?: boolean }>`
   width: 100%;
-  height: 400px;
+  height: ${({ isThumbs }) => (isThumbs ? " 100px" : "400px")};
+  margin-bottom: 10px;
 
   .swiper-button-next,
   .swiper-button-prev {
@@ -118,10 +144,10 @@ const StyledSwiper = styled(Swiper)`
   }
 `;
 
-const StyledSwiperSlide = styled(SwiperSlide)`
+const StyledSwiperSlide = styled(SwiperSlide)<{ isThumbs?: boolean }>`
   text-align: center;
   font-size: 18px;
-  background: #fff;
+  background: ${({ isThumbs }) => (isThumbs ? "transparent" : "#fff ")};
 
   display: flex;
   justify-content: center;
