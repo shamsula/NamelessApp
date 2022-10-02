@@ -18,6 +18,7 @@ const HeaderCont = styled(Container)`
   }
   text-transform: uppercase;
   letter-spacing: 10px;
+  line-height: 36px;
   padding: 24px 4px;
   color: ${({ theme }) => theme.colours.orangePeel};
   text-shadow: ${({ theme }) => theme.textShadow[1]};
@@ -93,7 +94,6 @@ export const Top = styled.main`
     background-size: auto 100%;
     background-repeat: no-repeat;
     background-position: center;
-
     }
   `}
 `;

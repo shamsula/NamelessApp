@@ -49,7 +49,8 @@ export function Picture({
       margin={hasMargin ? "5rem" : "0"}
       style={pictureCanvasStyle}
       data-test="canvas-picture"
-      isThumbs={isThumbs}
+      thumbs={isThumbs}
+      animation={isAnimationEnabled}
     />
   );
 }
@@ -59,17 +60,18 @@ export default Picture;
 const PictureCanvas = styled(animated.div)<{
   url: string;
   margin: string;
-  isThumbs: boolean;
+  thumbs?: boolean;
+  animation?: boolean;
 }>`
   //   margin: 1.2rem 2rem;
   background: ${({ url }) => `url(${url}), black`};
-  background-size: auto 100%;
+  background-size: ${({ animation }) => (animation ? "100% auto" : "100%")};
   // background-size: 100% auto;
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
-  min-height: ${({ isThumbs }) => (isThumbs ? " 100px" : "500px")};
-  border-radius: ${({ isThumbs }) => (isThumbs ? " 50px" : "0")};
+  min-height: ${({ thumbs }) => (thumbs ? " 100px" : "500px")};
+  border-radius: ${({ thumbs }) => (thumbs ? " 50px" : "0")};
 
   margin-bottom: 15px;
 

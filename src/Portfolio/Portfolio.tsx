@@ -7,7 +7,7 @@ import {
   Body,
 } from "../Style/Stuff";
 import { useSpring, animated } from "react-spring";
-import { Button } from "@material-ui/core";
+import { Button, Switch } from "@material-ui/core";
 
 import data from "../Data/data.json";
 import Back from "../Style/StyledBack";
@@ -26,13 +26,20 @@ import breakpoint from "../Style/Common/breakpoints";
 export function Portfolio(): JSX.Element {
   const headerProps = useSpring(headerSpringProps);
   const [isViewing3D, setIsViewing3d] = useState<boolean>(false);
+  const [isViewingThumbnails, setIsViewingThumbnails] =
+    useState<boolean>(false);
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(undefined);
   const [width, height] = useWindowSize();
+
+  // Disable animation for mobile views
   const isAnimationEnabled: boolean = width >= breakpoint.size.md;
 
   const renderImgs = (isThumbs?: boolean) =>
     data.images.map((img) => (
-      <StyledSwiperSlide isThumbs={isThumbs} key={`${img.url}`}>
+      <StyledSwiperSlide
+        showthumbs={isThumbs === true ? "true" : " "}
+        key={`${img.url}`}
+      >
         <Picture
           url={img.url}
           hasMargin={true}
@@ -42,8 +49,12 @@ export function Portfolio(): JSX.Element {
       </StyledSwiperSlide>
     ));
 
-  const onClick = () => {
+  const on3DToggle = () => {
     setIsViewing3d(!isViewing3D);
+  };
+
+  const onLegacyToggle = () => {
+    setIsViewingThumbnails(!isViewingThumbnails);
   };
 
   return (
@@ -56,42 +67,55 @@ export function Portfolio(): JSX.Element {
         <Body>
           <Back />
           <ButtonContainer>
-            <Button onClick={onClick} data-test="toggle-button">
+            <Button onClick={on3DToggle} data-test="toggle-button">
               <H3>View {isViewing3D ? "Static" : "Animated"} Content</H3>
             </Button>
+            {isAnimationEnabled && (
+              <H3>
+                Thumbnails
+                <StyledSwitch
+                  checked={isViewingThumbnails}
+                  onChange={onLegacyToggle}
+                  style={{
+                    color: "success.main",
+                  }}
+                />
+              </H3>
+            )}
           </ButtonContainer>
           {isViewing3D ? (
             <Port3D />
           ) : (
             <ImagesContainer data-test="image-container">
               <StyledSwiper
-                // navigation={true}
-                // modules={[Navigation]}
-                // className="mySwiper"
-                // // loop={true}
-                // rewind={true}
-
                 loop={true}
                 spaceBetween={10}
-                navigation={true}
+                navigation={isAnimationEnabled ? true : false}
                 thumbs={{ swiper: thumbsSwiper }}
                 modules={[FreeMode, Navigation, Thumbs]}
+                direction={isAnimationEnabled ? "horizontal" : "vertical"}
+                pagination={{
+                  clickable: true,
+                }}
               >
                 {renderImgs()}
               </StyledSwiper>
-              <StyledSwiper
-                onSwiper={setThumbsSwiper}
-                loop={true}
-                spaceBetween={10}
-                slidesPerView={4}
-                freeMode={true}
-                watchSlidesProgress={true}
-                modules={[FreeMode, Navigation, Thumbs]}
-                className="mySwiper"
-                isThumbs={true}
-              >
-                {renderImgs(true)}
-              </StyledSwiper>
+              {isAnimationEnabled && isViewingThumbnails && (
+                <StyledSwiper
+                  onSwiper={setThumbsSwiper}
+                  loop={true}
+                  spaceBetween={0}
+                  slidesPerView={3}
+                  freeMode={true}
+                  watchSlidesProgress={true}
+                  modules={[FreeMode, Navigation, Thumbs]}
+                  className="mySwiper"
+                  showthumbs="true"
+                  simulateTouch={true}
+                >
+                  {renderImgs(true)}
+                </StyledSwiper>
+              )}
             </ImagesContainer>
           )}
         </Body>
@@ -114,12 +138,18 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
+  flex-direction: column;
+  gap: 25px;
+
+  h3 {
+    margin: auto;
+  }
 `;
 
-const StyledSwiper = styled(Swiper)<{ isThumbs?: boolean }>`
+const StyledSwiper = styled(Swiper)<{ showthumbs?: string }>`
   width: 100%;
-  height: ${({ isThumbs }) => (isThumbs ? " 100px" : "400px")};
-  margin-bottom: 10px;
+  height: ${({ showthumbs }) => (showthumbs ? " 100px" : "400px")};
+  margin-bottom: 40px;
 
   .swiper-button-next,
   .swiper-button-prev {
@@ -144,12 +174,23 @@ const StyledSwiper = styled(Swiper)<{ isThumbs?: boolean }>`
   }
 `;
 
-const StyledSwiperSlide = styled(SwiperSlide)<{ isThumbs?: boolean }>`
+const StyledSwiperSlide = styled(SwiperSlide)<{ showthumbs: string }>`
   text-align: center;
   font-size: 18px;
-  background: ${({ isThumbs }) => (isThumbs ? "transparent" : "#fff ")};
+  background: ${({ showthumbs }) => (showthumbs ? "transparent" : "#fff ")};
 
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const StyledSwitch = styled(Switch)<{}>`
+  .MuiSwitch-colorSecondary.Mui-checked,
+  .MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track {
+    color: ${({ theme }) => theme.colours.orangePeel};
+  }
+
+  .MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track {
+    background-color: ${({ theme }) => theme.colours.orangePeel};
+  }
 `;
