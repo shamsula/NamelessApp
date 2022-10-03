@@ -7,6 +7,7 @@ import { Pagination } from "@mui/material";
 export default function LegacyPortfolio(): JSX.Element {
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage] = useState<number>(3);
+
   const maxPages = Math.ceil(data.images.length / cardsPerPage);
 
   // pagination index stuff
@@ -31,7 +32,7 @@ export default function LegacyPortfolio(): JSX.Element {
   return (
     <Gallery data-test="grid-gallery">
       <CardsContainer>
-        {currentCards.map((i) => (
+        {currentCards.map((i: ImageData) => (
           <Card data={i} />
         ))}
       </CardsContainer>
@@ -91,3 +92,9 @@ const StyledPagination = styled(Pagination)`
     }
   }
 `;
+
+export interface ImageData {
+  name: string;
+  url: string;
+  desc: string;
+}

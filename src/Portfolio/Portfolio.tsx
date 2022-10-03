@@ -24,6 +24,9 @@ import CarouselNextBtn from "./next-button.svg";
 import { useWindowSize } from "@react-hook/window-size";
 import breakpoint from "../Style/Common/breakpoints";
 
+import { shuffleArray } from "../utils/utils";
+import { ImageData } from "./LegacyPortfolio";
+
 export function Portfolio(): JSX.Element {
   const headerProps = useSpring(headerSpringProps);
   const [isViewing3D, setIsViewing3d] = useState<boolean>(false);
@@ -36,10 +39,12 @@ export function Portfolio(): JSX.Element {
   // Disable animation for mobile views
   const isAnimationEnabled: boolean = width >= breakpoint.size.md;
 
+  const shuffledData = shuffleArray(data.images);
+
   const renderImgs = (isThumbs?: boolean) =>
-    data.images.map((img) => (
+    shuffledData.map((img: ImageData) => (
       <StyledSwiperSlide
-        showthumbs={isThumbs === true ? "true" : " "}
+        showthumbs={isThumbs === true ? "true" : ""}
         key={`${img.url}`}
       >
         <Picture

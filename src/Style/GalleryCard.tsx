@@ -1,13 +1,11 @@
 import React from "react";
 import styled from "styled-components/macro";
-import MaterialIcon from "@material-ui/core/Icon";
 
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 
 type Props = {
   data: { name: string; url: string; desc: string };
@@ -49,12 +47,12 @@ const Heading = styled.h3`
 `;
 
 const CardDesc = styled.p`
-  font-size: 16px;
+  font-size: 14px;
   line-height: 20px;
   color: ${({ theme }) => theme.colours.prussianBlue};
   font-family: ${({ theme }) => theme.fontFamilies.body};
 
-  letter-spacing: 5px;
+  letter-spacing: 2px;
 `;
 
 const StyledButton = styled(Button)`
