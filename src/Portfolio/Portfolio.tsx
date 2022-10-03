@@ -13,6 +13,7 @@ import data from "../Data/data.json";
 import Back from "../Style/StyledBack";
 import Picture from "../Style/Picture";
 import Port3D from "./AnimatedPortfolio";
+import LegacyPortfolio from "./LegacyPortfolio";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./swiper-bundle.min.css";
@@ -26,6 +27,7 @@ import breakpoint from "../Style/Common/breakpoints";
 export function Portfolio(): JSX.Element {
   const headerProps = useSpring(headerSpringProps);
   const [isViewing3D, setIsViewing3d] = useState<boolean>(false);
+  const [isSlider, setIsSlider] = useState<boolean>(false);
   const [isViewingThumbnails, setIsViewingThumbnails] =
     useState<boolean>(false);
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(undefined);
@@ -57,6 +59,10 @@ export function Portfolio(): JSX.Element {
     setIsViewingThumbnails(!isViewingThumbnails);
   };
 
+  const onSliderToggle = () => {
+    setIsSlider(!isSlider);
+  };
+
   return (
     <>
       <Header maxWidth="md">
@@ -70,21 +76,16 @@ export function Portfolio(): JSX.Element {
             <Button onClick={on3DToggle} data-test="toggle-button">
               <H3>View {isViewing3D ? "Static" : "Animated"} Content</H3>
             </Button>
-            {isAnimationEnabled && (
-              <H3>
-                Thumbnails
-                <StyledSwitch
-                  checked={isViewingThumbnails}
-                  onChange={onLegacyToggle}
-                  style={{
-                    color: "success.main",
-                  }}
-                />
-              </H3>
+            {!isViewing3D && (
+              <Button onClick={onSliderToggle} data-test="toggle-button-1">
+                <H3>View as {isSlider ? "Slider" : "Cards"}</H3>
+              </Button>
             )}
           </ButtonContainer>
           {isViewing3D ? (
             <Port3D />
+          ) : isSlider ? (
+            <LegacyPortfolio />
           ) : (
             <ImagesContainer data-test="image-container">
               <StyledSwiper
@@ -100,6 +101,18 @@ export function Portfolio(): JSX.Element {
               >
                 {renderImgs()}
               </StyledSwiper>
+              {isAnimationEnabled && (
+                <H3>
+                  Thumbnails
+                  <StyledSwitch
+                    checked={isViewingThumbnails}
+                    onChange={onLegacyToggle}
+                    style={{
+                      color: "success.main",
+                    }}
+                  />
+                </H3>
+              )}
               {isAnimationEnabled && isViewingThumbnails && (
                 <StyledSwiper
                   onSwiper={setThumbsSwiper}

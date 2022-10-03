@@ -65,7 +65,8 @@ enum Colours {
 
 enum FontFamilies {
   heading = "'Russo One',Helvetica, Arial, sans-serif",
-  body = "'Kanit',Helvetica, Arial, sans-serif",
+  // body = "'Kanit',Helvetica, Arial, sans-serif",
+  body = "'Silkscreen',Helvetica, Arial, sans-serif",
   cursive = "'Dancing Script',Helvetica, Arial, sans-serif",
   altCursive = "'Dawning of a New Day',Helvetica, Arial, sans-serif",
   paragraph = "'Abel',Helvetica, Arial, sans-serif",
@@ -83,7 +84,7 @@ export interface Theme extends DefaultTheme {
 }
 
 const aberrationAnimation = css`
-  ${aberration} 2.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite
+  ${aberration} 2.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
 `;
 
 export const theme: Theme = {
