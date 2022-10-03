@@ -117,8 +117,8 @@ export function Portfolio(): JSX.Element {
                 <StyledSwiper
                   onSwiper={setThumbsSwiper}
                   loop={true}
-                  spaceBetween={0}
-                  slidesPerView={3}
+                  spaceBetween={10}
+                  slidesPerView={5}
                   freeMode={true}
                   watchSlidesProgress={true}
                   modules={[FreeMode, Navigation, Thumbs]}
@@ -190,11 +190,30 @@ const StyledSwiper = styled(Swiper)<{ showthumbs?: string }>`
 const StyledSwiperSlide = styled(SwiperSlide)<{ showthumbs: string }>`
   text-align: center;
   font-size: 18px;
-  background: ${({ showthumbs }) => (showthumbs ? "transparent" : "#fff ")};
+  background: ${({ showthumbs }) =>
+    showthumbs === "true" ? "transparent" : "#fff "};
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  > div {
+    filter: ${({ showthumbs }) =>
+      showthumbs === "true" ? "saturate(0.5)" : "saturate(1)"};
+    transition: filter 0.25s ease-in, border 0.25s ease-in-out;
+  }
+
+  &.swiper-slide-thumb-active {
+    /* filter: drop-shadow(-3px 0 4px #ff0); */
+    > div {
+      border: 2px solid #ff0;
+      filter: saturate(1);
+    }
+  }
+
+  &:hover > div {
+    filter: saturate(1);
+  }
 `;
 
 const StyledSwitch = styled(Switch)<{}>`

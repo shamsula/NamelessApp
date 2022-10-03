@@ -46,7 +46,7 @@ export function Picture({
       }
       onMouseLeave={() => isAnimationEnabled && set({ xys: [0, 0, 1] })}
       url={url}
-      margin={hasMargin ? "5rem" : "0"}
+      margin={hasMargin && !isThumbs ? "5rem" : "0"}
       style={pictureCanvasStyle}
       data-test="canvas-picture"
       thumbs={isThumbs}
@@ -64,6 +64,7 @@ const PictureCanvas = styled(animated.div)<{
   animation?: boolean;
 }>`
   //   margin: 1.2rem 2rem;
+
   background: ${({ url }) => `url(${url}), black`};
   background-size: ${({ animation }) => (animation ? "100% auto" : "100%")};
   // background-size: 100% auto;
