@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 import Icon from "../Style/Icon";
 import breakpoints from "../Style/Common/breakpoints";
+import DelayedLink from "../utils/DelayedLink";
 
 type Props = {};
 
@@ -20,15 +21,15 @@ export function Home(props: Props): JSX.Element {
       </Header>
       <StyledContainer maxWidth="md">
         <Body data-test="body-home">
-          <StyledLink to="/bio" tabIndex={-1}>
+          <DelayedLink to="/bio" tabIndex={-1}>
             <Button label="Auto-Biography" />
-          </StyledLink>
-          <StyledLink to="/portfolio" tabIndex={-1}>
+          </DelayedLink>
+          <DelayedLink to="/portfolio" tabIndex={-1}>
             <Button label="Art Portfolio" />
-          </StyledLink>
-          <StyledLink to="/inspire" tabIndex={-1}>
+          </DelayedLink>
+          <DelayedLink to="/inspire" tabIndex={-1}>
             <Button label="Inspire Me" />
-          </StyledLink>
+          </DelayedLink>
         </Body>
       </StyledContainer>
     </>
@@ -53,7 +54,7 @@ const Body = styled.div`
   `}
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(DelayedLink)`
   display: flex;
   justify-content: center;
   text-decoration: none;
@@ -62,5 +63,11 @@ const StyledLink = styled(Link)`
 
   @media only screen and (min-width: ${breakpoints.size.md}px) {
     height: 80px;
+    font-size: 24px;
+    transition: transform 0.25s ease-in-out;
+
+    &:active {
+      transform: scale(10);
+    }
   }
 `;
