@@ -17,8 +17,6 @@ steps:
 
 - script: |
     rm -rf node_modules
-    npm i -g yarn
-    yarn add react-scripts
-    yarn install --frozen-lockfile
+    yarn install
     yarn run build
   displayName: 'yarn install and build'
