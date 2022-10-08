@@ -40,7 +40,8 @@
     "start:server": "react-scripts start",
     "start:client": "serve --no-clipboard --single --listen 8080 dist",
     "validate": "yarn run test:coverage && yarn run test:e2e:run",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "serve": "serve -s build"
   },
   "eslintConfig": {
     "extends": "react-app"
