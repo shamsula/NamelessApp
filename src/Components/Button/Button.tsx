@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components/macro";
 import { useSpring, animated, interpolate } from "react-spring";
 import { useWindowSize } from "@react-hook/window-size";
-import breakpoint from "./Common/breakpoints";
+import breakpoint from "../Common/breakpoints";
 
 const calc = (x: number, y: number) => [
   -(y - window.innerHeight / 2) / 20,
@@ -63,6 +63,8 @@ const BaseButton = css<{ colour?: string }>`
   text-transform: capitalize;
   cursor: pointer;
   border-radius: 20px;
+  // target button click state
+  &:active,
   &:hover {
     text-decoration: none;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -77,6 +79,7 @@ const StyledAnimatedButton = styled(animated.button)<{
   mousecoordsx?: string;
 }>`
   ${BaseButton}
+  &:active,
   &:hover {
     box-shadow: #fff 0 -1px 4px, #ff0 0 -2px 10px,
       5px 5px 15px 5px rgba(0, 0, 0, 0);

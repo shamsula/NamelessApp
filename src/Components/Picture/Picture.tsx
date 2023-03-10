@@ -60,14 +60,11 @@ export default Picture;
 const PictureCanvas = styled(animated.div)<{
   url: string;
   margin: string;
-  thumbs?: boolean;
-  animation?: boolean;
+  thumbs?: boolean | undefined;
+  animation?: boolean | undefined;
 }>`
-  //   margin: 1.2rem 2rem;
-
   background: ${({ url }) => `url(${url}), black`};
   background-size: ${({ animation }) => (animation ? "100% auto" : "100%")};
-  // background-size: 100% auto;
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;

@@ -3,7 +3,7 @@ import {
   DefaultTheme,
   FlattenSimpleInterpolation,
 } from "styled-components";
-import { aberration } from "./Stuff";
+import { aberration } from "../Components/Stuff/Stuff";
 // import 'normalize.css'
 
 const customMedia = (maxWidth: number) => `@media (min-width: ${maxWidth}px)`;

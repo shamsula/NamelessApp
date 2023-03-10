@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import breakpoint from "./Common/breakpoints";
+import breakpoint from "../Components/Common/breakpoints";
 import "normalize.css";
 
 export const GlobalStyle = createGlobalStyle`

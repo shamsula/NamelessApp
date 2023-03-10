@@ -7,13 +7,13 @@ import { useSpring, animated } from "react-spring";
 import Biography from "./Bio/Bio";
 import Portfolio from "./Portfolio/Portfolio";
 import Home from "./Home/Home";
-import { Top } from "./Style/Stuff";
+import { Top } from "./Components/Stuff/Stuff";
 import { Link } from "react-router-dom";
-import Spinner from "./Style/Spinner";
+import Spinner from "./Components/Spinner/Spinner";
 import { Container } from "@material-ui/core";
 import Footer from "./TopStyle/Footer";
 import { Inspire } from "./Inspire/Inspire";
-import breakpoints from "./Style/Common/breakpoints";
+import breakpoints from "./Components/Common/breakpoints";
 
 function App() {
   const springProps = useSpring({
