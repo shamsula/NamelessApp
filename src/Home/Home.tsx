@@ -1,11 +1,15 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { StyledContainer, Header, headerSpringProps } from "../Style/Stuff";
-import { Button } from "../Style/Button";
+import {
+  StyledContainer,
+  Header,
+  headerSpringProps,
+} from "../Components/Stuff/Stuff";
+import { Button } from "../Components/Button/Button";
 import { Link } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
-import Icon from "../Style/Icon";
-import breakpoints from "../Style/Common/breakpoints";
+import Icon from "../Components/Icon/Icon";
+import breakpoints from "../Components/Common/breakpoints";
 import DelayedLink from "../utils/DelayedLink";
 
 type Props = {};

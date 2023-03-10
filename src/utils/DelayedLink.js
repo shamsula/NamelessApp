@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components/macro";
 
 import { Link, Redirect } from "react-router-dom";
-import breakpoints from "../Style/Common/breakpoints";
+import breakpoints from "../Components/Common/breakpoints";
 import { useWindowSize } from "@react-hook/window-size";
-import breakpoint from "../Style/Common/breakpoints";
+import breakpoint from "../Components/Common/breakpoints";
 
 // class DelayedLink extends Component {
 function DelayedLink(props) {

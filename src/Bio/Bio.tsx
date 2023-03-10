@@ -6,11 +6,11 @@ import {
   Header,
   headerSpringProps,
   Body,
-} from "../Style/Stuff";
+} from "../Components/Stuff/Stuff";
 import { useSpring, animated } from "react-spring";
 import Dashwund from "../img/dashwund.jpg";
 import Texture from "../img/paper.png";
-import Back from "../Style/StyledBack";
+import Back from "../Components/Button/StyledBack";
 
 type Props = {
   isFlipped?: boolean;

@@ -41,22 +41,22 @@ const StyledLoader = styled.div<{ colour?: string }>`
   top: calc(50% - 10px);
   width: 20px;
   z-index: 1;
-  // &:before {
-  //   animation:${spin} 2s infinite linear;
-  //   border:solid 2px transparent;
-  //   border-radius:50%;
-  //   border-right-color: ${({ theme, colour }) =>
-    colour ? theme.colours[colour] : "#3cf"} ;
-  //   border-top-color: ${({ theme, colour }) =>
-    colour ? theme.colours[colour] : "#3cf"} ;
-  //   box-sizing:border-box;
-  //   content:"";
-  //   height:16px;
-  //   left:0;
-  //   position:absolute;
-  //   top:0;
-  //   width:16px;
-  // }
+  &:before {
+    animation: ${spin} 2s infinite linear;
+    border: solid 2px transparent;
+    border-radius: 50%;
+    border-right-color: ${({ theme, colour }) =>
+      colour ? theme.colours[colour] : "#3cf"};
+    border-top-color: ${({ theme, colour }) =>
+      colour ? theme.colours[colour] : "#3cf"};
+    box-sizing: border-box;
+    content: "";
+    height: 16px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 16px;
+  }
   &:after {
     animation: ${spin} 3s infinite linear;
     border: solid 2px transparent;

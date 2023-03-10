@@ -5,13 +5,13 @@ import {
   Header,
   headerSpringProps,
   Body,
-} from "../Style/Stuff";
+} from "../Components/Stuff/Stuff";
 import { useSpring, animated } from "react-spring";
 import { Button, Switch } from "@material-ui/core";
 
 import data from "../Data/data.json";
-import Back from "../Style/StyledBack";
-import Picture from "../Style/Picture";
+import Back from "../Components/Button/StyledBack";
+import Picture from "../Components/Picture/Picture";
 import Port3D from "./AnimatedPortfolio";
 import LegacyPortfolio from "./LegacyPortfolio";
 
@@ -22,7 +22,7 @@ import { FreeMode, Navigation, Thumbs } from "swiper";
 // icon by icon-small: https://www.flaticon.com/authors/icon-small
 import CarouselNextBtn from "./next-button.svg";
 import { useWindowSize } from "@react-hook/window-size";
-import breakpoint from "../Style/Common/breakpoints";
+import breakpoint from "../Components/Common/breakpoints";
 
 import { shuffleArray } from "../utils/utils";
 import { ImageData } from "./LegacyPortfolio";

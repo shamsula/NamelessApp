@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components/macro";
 import { Container } from "@material-ui/core";
-import Omni from "../img/omnimon.jpg";
+import Omni from "../../img/omnimon.jpg";
 
 export const StyledContainer = styled(Container)<{ colour?: string }>`
   background: ${({ theme, colour }) =>
