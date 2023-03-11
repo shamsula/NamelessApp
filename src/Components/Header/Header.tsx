@@ -55,10 +55,8 @@ export function Header(props: any): JSX.Element {
   }, [scrollPosition]);
 
   const isScrollBeyondTresh = useMemo(() => {
-    return scrollPosition > 145;
+    return scrollPosition > 65 && !isNavOpen;
   }, [scrollPosition]);
-
-  console.log("scrollposition: ", scrollPosition);
 
   return (
     <HeaderContainer className={isNavOpen ? "is-open" : ""}>
