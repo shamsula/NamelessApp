@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import styled from "styled-components/macro";
 import { Switch, Route, Redirect } from "react-router-dom";
@@ -7,7 +6,7 @@ import { useSpring, animated } from "react-spring";
 import Biography from "./Bio/Bio";
 import Portfolio from "./Portfolio/Portfolio";
 import Home from "./Home/Home";
-import { Top } from "./Components/Stuff/Stuff";
+import { Top } from "./Components/Misc/Misc";
 import { Link } from "react-router-dom";
 import Spinner from "./Components/Spinner/Spinner";
 import { Container } from "@material-ui/core";

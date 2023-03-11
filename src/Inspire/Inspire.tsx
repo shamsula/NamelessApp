@@ -2,12 +2,12 @@ import React, { useMemo } from "react";
 import { animated, useSpring } from "react-spring";
 import styled from "styled-components/macro";
 import Picture from "../Components/Picture/Picture";
+import { Header } from "../Components/Header/Header";
 import {
   Body,
-  Header,
   headerSpringProps,
   StyledContainer,
-} from "../Components/Stuff/Stuff";
+} from "../Components/Misc/Misc";
 import Back from "../Components/Button/StyledBack";
 import { Button } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";

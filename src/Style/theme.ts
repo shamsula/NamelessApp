@@ -3,7 +3,7 @@ import {
   DefaultTheme,
   FlattenSimpleInterpolation,
 } from "styled-components";
-import { aberration } from "../Components/Stuff/Stuff";
+import { aberration } from "../Components/Misc/Misc";
 // import 'normalize.css'
 
 const customMedia = (maxWidth: number) => `@media (min-width: ${maxWidth}px)`;
@@ -21,6 +21,8 @@ enum Colours {
   //Aqua
   blueSapphire = "hsl(197, 93%, 29%)",
   lightBlueSapphire = "hsl(197, 93%, 42%)", // custom
+  blueSapphireOpacity = "hsla(197, 93%, 29%, 0.5)",
+  lightBlueSapphireOpacity = "hsla(197, 93%, 42%, 0.5)",
   metallicSeaweed = "hsl(187, 97%, 29%)",
   persianGreen = "hsl(174, 100%, 33%)",
   mountainMeadow = "hsl(167, 98%, 39%)",

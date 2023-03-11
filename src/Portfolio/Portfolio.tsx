@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
+import { Header } from "../Components/Header/Header";
 import {
   StyledContainer,
-  Header,
   headerSpringProps,
   Body,
-} from "../Components/Stuff/Stuff";
+} from "../Components/Misc/Misc";
 import { useSpring, animated } from "react-spring";
 import { Button, Switch } from "@material-ui/core";
 

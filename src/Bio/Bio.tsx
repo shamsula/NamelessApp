@@ -1,12 +1,12 @@
 import React, { useState, useMemo, useCallback } from "react";
 import styled from "styled-components/macro";
+import { Header } from "../Components/Header/Header";
 import {
   Top,
   StyledContainer,
-  Header,
   headerSpringProps,
   Body,
-} from "../Components/Stuff/Stuff";
+} from "../Components/Misc/Misc";
 import { useSpring, animated } from "react-spring";
 import Dashwund from "../img/dashwund.jpg";
 import Texture from "../img/paper.png";
