@@ -29,7 +29,7 @@ export const HeaderContainer = styled.div`
       flex-direction: column;
       background: ${({ theme }) => theme.colours.honeyDew};
       padding: 40px 50px 0;
-      border-bottom: 2px solid ${({ theme }) => theme.colours.darkGrey};
+      border-bottom: 1px solid ${({ theme }) => theme.colours.quickSilver};
     }
   }
 
@@ -106,14 +106,15 @@ export const NavItem = styled.li`
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: white;
-  text-shadow: ${({ theme }) => theme.textShadow[1]};
+  color: ${({ theme }) => theme.colours.darkGrey};
   transition: all 0.3s ease-in-out;
   border-bottom: none;
   text-align: center;
 
   &:hover {
-    color: ${({ theme }) => theme.colours.orangePeel};
+    color: ${({ theme }) => theme.colours.honeyDew};
+    text-shadow: ${({ theme }) => theme.textShadow[1]};
+
     cursor: pointer;
     transform: scale(1.1);
   }
@@ -136,7 +137,6 @@ export const CurrentPageTitle = styled(Container)<{
   color: ${({ theme }) => theme.colours.orangePeel};
   text-shadow: ${({ theme }) => theme.textShadow[1]};
   background: ${({ theme }) => theme.colours.honeyDew};
-  border-bottom: solid 2px ${({ theme }) => theme.colours.quickSilver};
   height: 80px;
   box-shadow: ${({ theme }) => theme.boxShadows[1]};
 
@@ -144,11 +144,24 @@ export const CurrentPageTitle = styled(Container)<{
   top: ${({ shouldHide }) => (shouldHide ? "-145px" : 0)};
   z-index: 300;
   transition: all 0.3s ease-in-out;
+
+  h1 {
+    font-size: 25px;
+    padding-left: 35px;
+    text-align: center;
+  }
+
+  @media only screen and (min-width: ${breakpoints.size.lg}px) {
+    h1 {
+      padding-left: 0;
+      font-size: 32px;
+    }
+  }
 `;
 
 export const StyledIconButtons = styled(IconButton)`
   position: absolute;
-  left: 20px;
+  left: 12px;
 
   &:hover {
     > div {
@@ -158,5 +171,9 @@ export const StyledIconButtons = styled(IconButton)`
 
   &:focus {
     transform: scale(0.9);
+  }
+
+  @media only screen and (min-width: ${breakpoints.size.lg}px) {
+    left: 20px;
   }
 `;

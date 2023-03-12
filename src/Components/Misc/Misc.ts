@@ -119,6 +119,7 @@ export const pixelBorder = css<{ bgColour?: string; bgColourInvert?: string }>`
 
   &:hover {
     --pixel-bg: ${({ theme }) => theme.colours.powderBlue};
+    --pixel-border-2: ${({ theme }) => theme.colours.orangePeel};
   }
   transition: all 0.3s ease-in-out;
   background: var(--pixel-bg);
