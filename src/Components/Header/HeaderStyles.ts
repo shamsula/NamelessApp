@@ -27,8 +27,9 @@ export const HeaderContainer = styled.div`
       align-content: space-around;
       flex-wrap: nowrap;
       flex-direction: column;
-      background: ${({ theme }) => theme.colours.honeyDew};
-      padding: 40px 50px 0;
+      background: ${({ theme }) => theme.colours.lightBlueSapphireOpacity};
+      backdrop-filter: blur(2.3px);
+      padding: 20px 50px 0;
       border-bottom: 1px solid ${({ theme }) => theme.colours.quickSilver};
     }
   }
@@ -100,9 +101,9 @@ export const NavContainer = styled.div`
 
 export const NavItem = styled.li`
   list-style: none;
-  padding: 0 5px;
+  padding: 20px 5px;
   margin: 0 15px;
-  font-size: 14px;
+  font-size: 24px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -111,6 +112,19 @@ export const NavItem = styled.li`
   border-bottom: none;
   text-align: center;
 
+  @media only screen and (min-width: ${breakpoints.size.lg}px) {
+    font-size: 12px;
+    padding: 10px 15px;
+    min-width: 200px;
+    background: ${({ theme }) => theme.colours.orangePeel};
+    border-radius: 10px;
+    border: 1px solid ${({ theme }) => theme.colours.darkGrey};
+
+    &:hover {
+      text-shadow: ${({ theme }) => theme.textShadow[2]};
+    }
+  }
+
   &:hover {
     color: ${({ theme }) => theme.colours.honeyDew};
     text-shadow: ${({ theme }) => theme.textShadow[1]};
@@ -118,8 +132,9 @@ export const NavItem = styled.li`
     cursor: pointer;
     transform: scale(1.1);
   }
-
-  ${pixelBorder}
+  @media only screen and (max-width: ${breakpoints.size.lg}px) {
+    ${pixelBorder}
+  }
 `;
 
 export const CurrentPageTitle = styled(Container)<{

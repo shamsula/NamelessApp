@@ -88,7 +88,7 @@ export const Top = styled.main`
   width: 100%;
 
   ${({ theme }) => `${theme.media.desktop} {
-    padding: 1.6rem;
+    padding: 0;
     background: url(${Omni}), #fff;
     background-size: auto 100%;
     background-repeat: no-repeat;
