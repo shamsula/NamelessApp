@@ -1,6 +1,7 @@
 import { Container } from "@material-ui/core";
 import styled from "styled-components";
 import { IconButton } from "../Button/IconButton";
+import breakpoints from "../Common/breakpoints";
 import { gradientAnimation, pixelBorder } from "../Misc/Misc";
 
 export const HeaderContainer = styled.div`
@@ -27,15 +28,16 @@ export const HeaderContainer = styled.div`
       flex-wrap: nowrap;
       flex-direction: column;
       background: ${({ theme }) => theme.colours.honeyDew};
-      padding: 80px 50px 0;
+      padding: 40px 50px 0;
+      border-bottom: 2px solid ${({ theme }) => theme.colours.darkGrey};
     }
   }
 
-  @media (min-width: 768px) {
+  @media only screen and (min-width: ${breakpoints.size.md}px) {
     height: 110px;
   }
 
-  @media (min-width: 1024px) {
+  @media only screen and (min-width: ${breakpoints.size.lg}px) {
     z-index: 100;
     top: 0;
 
@@ -69,8 +71,7 @@ export const NavContainer = styled.div`
   & > a {
     text-decoration: none;
   }
-
-  @media (min-width: 1024px) {
+  @media only screen and (min-width: ${breakpoints.size.lg}px) {
     position: relative;
     display: flex;
     justify-content: center;

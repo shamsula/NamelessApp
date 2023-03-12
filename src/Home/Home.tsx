@@ -16,11 +16,6 @@ export function Home(props: Props): JSX.Element {
 
   return (
     <>
-      {/* remove the prop dep*/}
-      {/* reinsate spinner */}
-      <Header maxWidth="md">
-        {/* <Icon icon="home" colour="#61DAFB" /> */}
-      </Header>
       <StyledContainer maxWidth="md">
         <Body data-test="body-home">
           <DelayedLink to="/bio" tabIndex={-1}>

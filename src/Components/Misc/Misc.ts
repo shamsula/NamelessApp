@@ -1,13 +1,20 @@
 import styled, { keyframes, css } from "styled-components/macro";
 import { Container } from "@material-ui/core";
 import Omni from "../../img/omnimon.jpg";
+import breakpoints from "../Common/breakpoints";
 
 export const StyledContainer = styled(Container)<{ colour?: string }>`
   background: ${({ theme, colour }) =>
     colour ? colour : theme.colours.platinum};
   min-height: 100vh;
   padding: 12px;
-  margin-top: 85px;
+  margin-top: 80px;
+  @media only screen and (min-width: ${breakpoints.size.md}px) {
+    margin-top: 45px;
+  }
+  @media only screen and (min-width: ${breakpoints.size.lg}px) {
+    margin-top: 85px;
+  }
 `;
 
 export const Body = styled.div`

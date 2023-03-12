@@ -7,7 +7,7 @@ import {
   pixelBorder,
   gradientAnimation,
 } from "../../Components/Misc/Misc";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { IconChevron, IconHamburger } from "../Misc/MiscIcons";
 import { IconButton } from "../Button/IconButton";
 import {
@@ -34,6 +34,7 @@ export function Header(props: any): JSX.Element {
   // load dynamic from store in future
   const navitemlist = ["Auto-Biography", "Art Portfolio", "Inspire Me"];
   const navItemRoutes = ["/bio", "/portfolio", "/inspire"];
+  const location = useLocation();
 
   const navitemobjects = useMemo(
     () =>
@@ -43,6 +44,14 @@ export function Header(props: any): JSX.Element {
       })),
     [navitemlist, navItemRoutes]
   );
+
+  const currentPageTitle = useMemo(() => {
+    const currentRoute = location.pathname;
+    const currentPage = navitemobjects.find(
+      (item) => item.route === currentRoute
+    );
+    return currentPage ? currentPage.item : "Home";
+  }, [location.pathname, navitemobjects]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,7 +91,7 @@ export function Header(props: any): JSX.Element {
             <IconHamburger />
           )}
         </StyledIconButtons>
-        <animated.h1 style={springProps}>Home</animated.h1>
+        <animated.h1 style={springProps}>{currentPageTitle}</animated.h1>
         {props.children}
       </CurrentPageTitle>
     </HeaderContainer>

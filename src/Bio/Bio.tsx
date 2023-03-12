@@ -78,11 +78,6 @@ export function Bio(props: Props): JSX.Element {
 
   return (
     <>
-      <Header maxWidth="md">
-        <animated.h1 style={headerProps} data-test="header-bio">
-          Biography
-        </animated.h1>
-      </Header>
       <StyledContainer maxWidth="md">
         <Body onClick={handleOnClick} role="clickable">
           <Back />

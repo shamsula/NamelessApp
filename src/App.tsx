@@ -13,6 +13,7 @@ import { Container } from "@material-ui/core";
 import Footer from "./TopStyle/Footer";
 import { Inspire } from "./Inspire/Inspire";
 import breakpoints from "./Components/Common/breakpoints";
+import { Header } from "./Components/Header/Header";
 
 function App() {
   const springProps = useSpring({
@@ -30,6 +31,7 @@ function App() {
   return (
     <HomeCont style={springProps}>
       <Top>
+        <Header maxWidth="md" />
         <SuperHeader maxWidth="md">
           <Spinner colour="orangePeel" />
         </SuperHeader>

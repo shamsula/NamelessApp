@@ -42,10 +42,6 @@ export function Inspire(): JSX.Element {
 
   return (
     <>
-      <Header maxWidth="md">
-        <animated.h1 style={headerProps}>Get Inspired</animated.h1>
-      </Header>
-
       <StyledContainer maxWidth="md">
         <Body>
           <Back />
