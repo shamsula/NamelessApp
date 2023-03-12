@@ -71,7 +71,7 @@ export function Header(props: any): JSX.Element {
     <HeaderContainer className={isNavOpen ? "is-open" : ""}>
       <NavContainer>
         {navitemobjects.map(({ item, route }) => (
-          <Link to={route} key={item}>
+          <Link to={route} key={item} onClick={() => setIsNavOpen(false)}>
             <NavItem>{item}</NavItem>
           </Link>
         ))}
