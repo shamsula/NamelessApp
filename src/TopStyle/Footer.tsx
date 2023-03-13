@@ -18,14 +18,17 @@ function Footer(props: Props): JSX.Element {
 export default Footer;
 
 const StyledFooter = styled(Container)`
+  background-color: ${({ theme }) => theme.colours.newBlack};
   && {
     display: flex;
-    padding: 4px;
+    padding: 12px;
   }
   justify-content: end;
   text-align: right;
   h5 {
     color: white;
+    margin: 0;
+    text-transform: uppercase;
   }
 `;
 

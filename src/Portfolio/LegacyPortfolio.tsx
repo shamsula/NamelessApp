@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import styled from "styled-components";
-import Card from "../Style/GalleryCard";
+import Card from "../Components/GalleryCard/GalleryCard";
 import data from "../Data/data.json";
 import { Pagination } from "@mui/material";
 

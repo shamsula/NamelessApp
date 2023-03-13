@@ -69,16 +69,13 @@ export default function sketch(p) {
   };
 
   p.myCustomRedrawAccordingToNewPropsHandler = (props) => {
-    console.log(props.dimensions);
     if (props.dimensions) {
       p.width = props.dimensions.width;
       p.height = props.dimensions.height;
       d.forEach((e) => {
-        console.log(e);
         e.x = p.random(p.width);
       });
     }
-    console.log("p stuff", p.height, p.width);
     p.resizeCanvas(p.width, p.height);
   };
 

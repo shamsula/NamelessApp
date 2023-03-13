@@ -1,20 +1,20 @@
 import React, { useMemo } from "react";
 import { animated, useSpring } from "react-spring";
 import styled from "styled-components/macro";
-import Picture from "../Style/Picture";
+import Picture from "../Components/Picture/Picture";
+import { Header } from "../Components/Header/Header";
 import {
   Body,
-  Header,
   headerSpringProps,
   StyledContainer,
-} from "../Style/Stuff";
-import Back from "../Style/StyledBack";
+} from "../Components/Misc/Misc";
+import Back from "../Components/Button/StyledBack";
 import { Button } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { fetchQuote } from "../store/spring";
 import { useWindowSize } from "@react-hook/window-size";
-import breakpoint from "../Style/Common/breakpoints";
+import breakpoint from "../Components/Common/breakpoints";
 
 export function Inspire(): JSX.Element {
   const headerProps = useSpring(headerSpringProps);
@@ -42,10 +42,6 @@ export function Inspire(): JSX.Element {
 
   return (
     <>
-      <Header maxWidth="md">
-        <animated.h1 style={headerProps}>Get Inspired</animated.h1>
-      </Header>
-
       <StyledContainer maxWidth="md">
         <Body>
           <Back />

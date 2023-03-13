@@ -1,16 +1,16 @@
 import React, { useState, useMemo, useCallback } from "react";
 import styled from "styled-components/macro";
+import { Header } from "../Components/Header/Header";
 import {
   Top,
   StyledContainer,
-  Header,
   headerSpringProps,
   Body,
-} from "../Style/Stuff";
+} from "../Components/Misc/Misc";
 import { useSpring, animated } from "react-spring";
 import Dashwund from "../img/dashwund.jpg";
 import Texture from "../img/paper.png";
-import Back from "../Style/StyledBack";
+import Back from "../Components/Button/StyledBack";
 
 type Props = {
   isFlipped?: boolean;
@@ -78,11 +78,6 @@ export function Bio(props: Props): JSX.Element {
 
   return (
     <>
-      <Header maxWidth="md">
-        <animated.h1 style={headerProps} data-test="header-bio">
-          Biography
-        </animated.h1>
-      </Header>
       <StyledContainer maxWidth="md">
         <Body onClick={handleOnClick} role="clickable">
           <Back />
