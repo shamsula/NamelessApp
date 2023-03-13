@@ -24,7 +24,6 @@ export function Button({ label, colour }: Props): JSX.Element {
 
   const isButtonAnimated: boolean = width >= 768;
 
-  console.log("size", width, height, onlyWidth, onlyHeight);
   const [props, set] = useSpring(() => ({
     xys: [27, 1, 1],
     config: { mass: 5, tension: 350, friction: 140 },

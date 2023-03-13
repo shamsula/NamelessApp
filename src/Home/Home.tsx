@@ -1,16 +1,13 @@
 import React from "react";
 import styled from "styled-components/macro";
-import {
-  StyledContainer,
-  Header,
-  headerSpringProps,
-} from "../Components/Stuff/Stuff";
+import { StyledContainer, headerSpringProps } from "../Components/Misc/Misc";
 import { Button } from "../Components/Button/Button";
 import { Link } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 import Icon from "../Components/Icon/Icon";
 import breakpoints from "../Components/Common/breakpoints";
 import DelayedLink from "../utils/DelayedLink";
+import { Header } from "../Components/Header/Header";
 
 type Props = {};
 
@@ -19,10 +16,6 @@ export function Home(props: Props): JSX.Element {
 
   return (
     <>
-      <Header maxWidth="md">
-        {/* <Icon icon="home" colour="#61DAFB" /> */}
-        <animated.h1 style={springProps}>Home</animated.h1>
-      </Header>
       <StyledContainer maxWidth="md">
         <Body data-test="body-home">
           <DelayedLink to="/bio" tabIndex={-1}>
