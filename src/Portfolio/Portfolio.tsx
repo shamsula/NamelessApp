@@ -165,26 +165,38 @@ const StyledSwiper = styled(Swiper)<{ showthumbs?: string }>`
   height: ${({ showthumbs }) => (showthumbs ? " 100px" : "400px")};
   margin-bottom: 40px;
 
+  .swiper-button-next {
+    transform: rotate(-90deg);
+    :hover {
+      transform: rotate(-90deg) scale(1.2);
+    }
+  }
+
+  .swiper-button-prev {
+    transform: rotate(90deg);
+    :hover {
+      transform: rotate(90deg) scale(1.2);
+    }
+  }
+
   .swiper-button-next,
   .swiper-button-prev {
-    width: calc(var(--swiper-navigation-size) / 29 * 27);
-    background-image: url(${CarouselNextBtn});
-    background-repeat: no-repeat;
-    background-size: 100% auto;
+    mask-image: none;
+    mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3e%3c!--! Font Awesome Pro 6.3.0 by %40fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons%2c Inc. --%3e%3cpath d='M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z'/%3e%3c/svg%3e");
+    background-size: cover;
     background-position: center;
-    transition: filter 1s;
-    &:hover {
-      filter: drop-shadow(-3px 0 4px #ff0);
+    background-repeat: no-repeat;
+    background-color: ${({ theme }) => theme.colours.orangePeel};
+    width: 24px;
+    height: 28px;
+
+    ::after {
+      display: none;
     }
   }
 
   .swiper-button-prev {
     transform: scale(-1, -1);
-  }
-
-  .swiper-button-next::after,
-  .swiper-button-prev::after {
-    display: none;
   }
 `;
 
@@ -200,12 +212,12 @@ const StyledSwiperSlide = styled(SwiperSlide)<{ showthumbs: string }>`
 
   > div {
     filter: ${({ showthumbs }) =>
-      showthumbs === "true" ? "saturate(0.5)" : "saturate(1)"};
+      showthumbs === "true" ? "saturate(0.3)" : "saturate(1)"};
     transition: filter 0.25s ease-in, border 0.25s ease-in-out;
+    cursor: pointer;
   }
 
   &.swiper-slide-thumb-active {
-    /* filter: drop-shadow(-3px 0 4px #ff0); */
     > div {
       border: 2px solid #ff0;
       filter: saturate(1);
