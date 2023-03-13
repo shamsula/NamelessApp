@@ -1,6 +1,7 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## "About" this NamelessApp
+This is a simple React web application that I built to showcase some of the cooler libraries and techniques that I've come across over the years. If you're hit with a sense of nostalgia, you're welcome. 😉
 
-## Available Scripts
+## Available Scripts 
 
 In the project directory, you can run these commands:
 
@@ -9,14 +10,13 @@ In the project directory, you can run these commands:
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
 ### `yarn cy:run`
 
 Runs tests using Cypress
 
 I have added some UI and API tests - they should suffice for now.
+
+Note: UI Tests are no longer being actively maintained. I may come back to this years later. 🤷
 
 ### `yarn cy:open`
 
@@ -36,5 +36,3 @@ REACT_APP_QUOTE_KEY=yourpersonalquotekeyhere
 
 ### Thats about it 
 
-## Speaking of "About"
-This is just an app I built to dump stuff from my art portfolio. Nothing too complicated.
