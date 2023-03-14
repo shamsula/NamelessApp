@@ -177,6 +177,7 @@ export const CurrentPageTitle = styled(Container)<{
 export const StyledIconButtons = styled(IconButton)`
   position: absolute;
   left: 12px;
+  z-index: 400;
 
   &:hover {
     > div {
