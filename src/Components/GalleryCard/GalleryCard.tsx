@@ -6,21 +6,25 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
+import { ImageData } from "../../Views/Posts/Posts";
 
 type Props = {
-  data: { name: string; url: string; desc: string };
+  // refactor legacyportfolio
+  data: ImageData; // change from any to the correct type
 };
 export function GalleryCard({ data }: Props): JSX.Element {
-  const { name, url, desc } = data;
+  const { title, media, description, externalUrl } = data;
   return (
     <StyledCard style={{ maxWidth: 345 }}>
-      <CardMedia component="img" height="140" image={url} alt={name} />
+      <CardMedia component="img" height="140" image={media?.url} alt={title} />
       <CardContent>
-        <Heading>{name}</Heading>
-        <CardDesc>{desc}</CardDesc>
+        <Heading>{title}</Heading>
+        <CardDesc>{description}</CardDesc>
       </CardContent>
       <CardActions>
-        <StyledButton size="small">View on Artstation</StyledButton>
+        <StyledLink href={externalUrl}>
+          <StyledButton size="small">View on Artstation</StyledButton>
+        </StyledLink>
       </CardActions>
     </StyledCard>
   );
@@ -61,4 +65,8 @@ const StyledButton = styled(Button)`
     font-weight: 800;
     text-transform: capitalize;
   }
+`;
+
+const StyledLink = styled.a`
+  text-decoration: none;
 `;

@@ -33,7 +33,8 @@ export default function LegacyPortfolio(): JSX.Element {
     <Gallery data-test="grid-gallery">
       <CardsContainer>
         {currentCards.map((i: ImageData) => (
-          <Card data={i} />
+          // <Card data={i} />
+          <></>
         ))}
       </CardsContainer>
 

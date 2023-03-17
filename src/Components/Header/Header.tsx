@@ -32,8 +32,13 @@ export function Header(props: any): JSX.Element {
   const toggleNav = () => setIsNavOpen(!isNavOpen);
 
   // load dynamic from store in future
-  const navitemlist = ["Auto-Biography", "Art Portfolio", "Inspire Me"];
-  const navItemRoutes = ["/bio", "/portfolio", "/inspire"];
+  const navitemlist = [
+    "Auto-Biography",
+    "Art Portfolio",
+    "Inspire Me",
+    "Posts",
+  ];
+  const navItemRoutes = ["/bio", "/portfolio", "/inspire", "/posts"];
   const location = useLocation();
 
   const navitemobjects = useMemo(
