@@ -1,5 +1,5 @@
 import React from "react";
-import Bio from "../Bio/Bio";
+import Bio from "../Views/Bio/Bio";
 import { render, fireEvent } from "@testing-library/react";
 import { TestWrapper } from "../utils/TestWrapper";
 

@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
-import { Header } from "../Components/Header/Header";
+import { Header } from "../../Components/Header/Header";
 import {
   StyledContainer,
   headerSpringProps,
   Body,
-} from "../Components/Misc/Misc";
+} from "../../Components/Misc/Misc";
 import { useSpring, animated } from "react-spring";
 import { Button, Switch } from "@material-ui/core";
 
-import data from "../Data/data.json";
-import Back from "../Components/Button/StyledBack";
-import Picture from "../Components/Picture/Picture";
+import data from "../../Data/data.json";
+import Back from "../../Components/Button/StyledBack";
+import Picture from "../../Components/Picture/Picture";
 import Port3D from "./AnimatedPortfolio";
 import LegacyPortfolio from "./LegacyPortfolio";
 
@@ -22,9 +22,9 @@ import { FreeMode, Navigation, Thumbs } from "swiper";
 // icon by icon-small: https://www.flaticon.com/authors/icon-small
 import CarouselNextBtn from "./next-button.svg";
 import { useWindowSize } from "@react-hook/window-size";
-import breakpoint from "../Components/Common/breakpoints";
+import breakpoint from "../../Components/Common/breakpoints";
 
-import { shuffleArray } from "../utils/utils";
+import { shuffleArray } from "../../utils/utils";
 import { ImageData } from "./LegacyPortfolio";
 
 export function Portfolio(): JSX.Element {

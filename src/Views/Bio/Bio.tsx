@@ -1,16 +1,16 @@
 import React, { useState, useMemo, useCallback } from "react";
 import styled from "styled-components/macro";
-import { Header } from "../Components/Header/Header";
+import { Header } from "../../Components/Header/Header";
 import {
   Top,
   StyledContainer,
   headerSpringProps,
   Body,
-} from "../Components/Misc/Misc";
+} from "../../Components/Misc/Misc";
 import { useSpring, animated } from "react-spring";
-import Dashwund from "../img/dashwund.jpg";
-import Texture from "../img/paper.png";
-import Back from "../Components/Button/StyledBack";
+import Dashwund from "../../img/dashwund.jpg";
+import Texture from "../../img/paper.png";
+import Back from "../../Components/Button/StyledBack";
 
 type Props = {
   isFlipped?: boolean;
