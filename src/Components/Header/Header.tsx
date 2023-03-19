@@ -36,9 +36,14 @@ export function Header(props: any): JSX.Element {
     "Auto-Biography",
     "Art Portfolio",
     "Inspire Me",
-    "Posts",
+    // "Posts",
   ];
-  const navItemRoutes = ["/bio", "/portfolio", "/inspire", "/posts"];
+  const navItemRoutes = [
+    "/bio",
+    "/portfolio",
+    "/inspire",
+    // "/posts"
+  ];
   const location = useLocation();
 
   const navitemobjects = useMemo(
