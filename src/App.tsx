@@ -58,9 +58,9 @@ function App() {
           <Route path="/inspire">
             <Inspire />
           </Route>
-          <Route path="/posts">
+          {/* <Route path="/posts">
             <Posts />
-          </Route>
+          </Route> */}
           <Redirect to="/" />
         </Switch>
         <Footer>
