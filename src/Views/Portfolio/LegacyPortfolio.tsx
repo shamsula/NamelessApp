@@ -83,6 +83,10 @@ const CardsContainer = styled.div`
 const Gallery = styled.div`
   display: flex;
   flex-direction: column;
+
+  .MuiPagination-ul {
+    margin-top: 20px;
+  }
 `;
 
 const StyledPagination = styled(Pagination)`
