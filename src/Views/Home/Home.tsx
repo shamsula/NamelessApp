@@ -9,7 +9,7 @@ type Props = {};
 export function Home(props: Props): JSX.Element {
   return (
     <>
-      <StyledContainer maxWidth="md">
+      <StyledContainer maxWidth="lg">
         <Body data-test="body-home">
           <DelayedLink to="/bio" tabIndex={-1}>
             <Button label="Auto-Biography" />

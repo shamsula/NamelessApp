@@ -43,7 +43,7 @@ export default function Posts(): JSX.Element {
   }
 
   return (
-    <StyledContainer maxWidth="md">
+    <StyledContainer maxWidth="lg">
       <Body>
         <Gallery data-test="grid-gallery">
           <CardsContainer>

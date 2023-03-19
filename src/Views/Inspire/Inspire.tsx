@@ -34,7 +34,7 @@ export function Inspire(): JSX.Element {
 
   return (
     <>
-      <StyledContainer maxWidth="md">
+      <StyledContainer maxWidth="lg">
         <Body>
           <Back />
           <QuoteContainer>

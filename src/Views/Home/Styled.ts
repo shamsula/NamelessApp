@@ -9,6 +9,9 @@ export const Body = styled.div`
   border: 1px solid ${({ theme }) => theme.colours.quickSilver};
   border-radius: 4px;
   margin-top: 12px;
+  @media only screen and (min-width: ${breakpoints.size.lg}px) {
+    margin-top: 35px;
+  }
 
   ${({ theme }) => `${theme.media.tablet} {
     padding: 40px 25px;

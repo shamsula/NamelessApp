@@ -80,7 +80,7 @@ export function Bio(props: Props): JSX.Element {
 
   return (
     <>
-      <StyledContainer maxWidth="md">
+      <StyledContainer maxWidth="lg">
         <Body onClick={handleOnClick} role="clickable">
           <Back />
           <FlipContainer>

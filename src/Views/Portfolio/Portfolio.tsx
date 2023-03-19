@@ -73,7 +73,7 @@ export function Portfolio(): JSX.Element {
 
   return (
     <>
-      <StyledContainer maxWidth="md">
+      <StyledContainer maxWidth="lg">
         <Body>
           <Back />
           <ButtonContainer>
