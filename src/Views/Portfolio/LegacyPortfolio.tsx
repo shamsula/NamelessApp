@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from "react";
 import styled from "styled-components";
 import Card from "../../Components/GalleryCard/GalleryCard";
-import data from "../../Data/data.json";
 import { Pagination } from "@mui/material";
 import { ImageData } from "./Portfolio";
 import { useSelector } from "react-redux";
@@ -13,8 +12,8 @@ export default function LegacyPortfolio(): JSX.Element {
   const [cardsPerPage] = useState<number>(6);
 
   const maxPages = useMemo(
-    () => (data ? Math.ceil(artwork.length / cardsPerPage) : 1),
-    [data, cardsPerPage]
+    () => (artwork ? Math.ceil(artwork.length / cardsPerPage) : 1),
+    [artwork, cardsPerPage]
   );
 
   // pagination index stuff
