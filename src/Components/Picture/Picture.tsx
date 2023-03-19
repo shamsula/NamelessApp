@@ -36,7 +36,7 @@ export function Picture({
             }),
           }
         : {},
-    [isAnimationEnabled]
+    [isAnimationEnabled, props.xys]
   );
 
   return (

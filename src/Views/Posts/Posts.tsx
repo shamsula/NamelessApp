@@ -1,11 +1,11 @@
 //create new tsx component for posts
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import styled from "styled-components/macro";
 import Spinner from "../../Components/Spinner/Spinner";
 import { Pagination } from "@mui/material";
 import Card from "../../Components/GalleryCard/GalleryCard";
 import { Body, StyledContainer } from "../../Components/Misc/Misc";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 export default function Posts(): JSX.Element {
   const artwork = useSelector((state: any) => state.artGallery.artwork);

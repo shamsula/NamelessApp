@@ -36,9 +36,6 @@ const StyledCard = styled(Card)<{ colour?: string }>`
   background-color: ${({ theme, colour }) =>
     colour ? theme.colours[colour] : theme.colours.desertSand};
 `;
-const Container = styled.div`
-  display: flex;
-`;
 
 const Heading = styled.h3`
   color: ${({ theme }) => theme.colours.orangePeel};

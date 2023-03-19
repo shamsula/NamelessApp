@@ -14,7 +14,7 @@ import Footer from "./TopStyle/Footer";
 import { Inspire } from "./Views/Inspire/Inspire";
 import breakpoints from "./Components/Common/breakpoints";
 import { Header } from "./Components/Header/Header";
-import Posts from "./Views/Posts/Posts";
+// import Posts from "./Views/Posts/Posts";
 import { useDispatch } from "react-redux";
 import { fetchArtwork } from "./store/artGallery";
 
