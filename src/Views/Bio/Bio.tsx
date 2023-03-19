@@ -8,14 +8,21 @@ import {
   Body,
 } from "../../Components/Misc/Misc";
 import { useSpring, animated } from "react-spring";
-import Dashwund from "../../img/dashwund.jpg";
 import Texture from "../../img/paper.png";
 import Back from "../../Components/Button/StyledBack";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { useSelector } from "react-redux";
+import Spinner from "../../Components/Spinner/Spinner";
 
 type Props = {
   isFlipped?: boolean;
 };
 export function Bio(props: Props): JSX.Element {
+  const author = useSelector(
+    (state: any) =>
+      state.artGallery.artists.filter((artist: any) => artist.isAdmin)[0]
+  );
+
   const [flipped, set] = useState<boolean>(props.isFlipped ?? false);
   const [canClick, setCanClick] = useState<boolean>(true);
   const { transform } = useSpring({
@@ -34,35 +41,30 @@ export function Bio(props: Props): JSX.Element {
   }, [flipped, canClick, transform]);
 
   const Text = (): JSX.Element => {
-    if (!flipped && canClick) {
+    if (canClick) {
       return (
         <>
-          <SubHeadingCont data-test="front-side">
-            <H4>Intro</H4>
+          <SubHeadingCont data-test={!flipped ? "flip-side" : "front-side"}>
+            <H4>{!flipped ? "Intro" : "Flip Side"}</H4>
           </SubHeadingCont>
-          <p className="cursive">
-            I'm Limon. Coder by day, Artist by night - I'm leaving my footpring
-            in this world. I've put in quite an effort trying to learn how to
-            code, to only come to a realization that maybe one day none of us
-            will need/want to. I've come to like techniques that make our lives
-            better. Software Engineering, for example will always have a place
-            in my heart. Speaking of heart, I've put some into making this
-            peace. I hope some of you like it, but I predict that as it grows
-            it'll start making less sense. If I'm selling an emotion, it might
-            just be nostalgia.
+          <p className={`${flipped && "invisible"}`}>
+            {documentToReactComponents(author.bio.json)}
           </p>
-          <p style={{ textAlign: "right" }} className="cursive">
-            - Limon
-          </p>
+          {!flipped ? (
+            <p style={{ textAlign: "right" }} className="cursive signature">
+              - {author.fname} {author.lname}
+            </p>
+          ) : (
+            <p className="cursive">Fin.</p>
+          )}
         </>
       );
     } else {
       return (
         <>
-          <SubHeadingCont data-test="flip-side">
-            <H4>Flip Side</H4>
+          <SubHeadingCont data-test="">
+            <H4></H4>
           </SubHeadingCont>
-          <p className="cursive">Fin.</p>
         </>
       );
     }
@@ -85,9 +87,10 @@ export function Bio(props: Props): JSX.Element {
             <TextContainer
               style={{ transform: rotateContainer() }}
               flipped={flipped ? 1 : 0}
+              img={author ? author.photo.url : ""}
               data-test="bio-text"
             >
-              {Text()}
+              {author ? Text() : <Spinner />}
             </TextContainer>
           </FlipContainer>
         </Body>
@@ -100,19 +103,41 @@ export default Bio;
 
 const FlipContainer = styled.div`
   position: relative;
+  cursor: pointer;
 `;
-const TextContainer = styled(animated.div)<{ flipped: number }>`
-  color: ${({ flipped }) => (flipped === 1 ? "#fff" : `#fff`)};
+const TextContainer = styled(animated.div)<{ flipped: number; img: string }>`
+  && h2 {
+    margin: 0;
+  }
+
+  &&,
+  && p {
+    color: ${({ flipped }) => (flipped === 1 ? "black" : `#fff`)};
+    font-family: ${({ theme }) => theme.fontFamilies.heading};
+    letter-spacing: 1px;
+  }
+
+  && .cursive {
+    font-family: ${({ theme }) => theme.fontFamilies.cursive} !important;
+  }
+
+  && .signature {
+    margin-top: 20px;
+  }
+
+  .invisible * {
+    color: transparent !important;
+  }
   padding: 24px;
-  background: ${({ theme, flipped }) =>
+  background: ${({ theme, flipped, img }) =>
     flipped === 1
-      ? `url(${Dashwund}), black`
+      ? `url(${img}), black`
       : `url(${Texture}), ${theme.colours.orangePeel}`};
-  background-size: ${({ flipped }) => (flipped === 1 ? "auto 100%" : "auto")};
+  background-size: ${({ flipped }) => (flipped === 1 ? "cover" : "auto")};
   background-repeat: ${({ flipped }) =>
     flipped === 1 ? "no-repeat" : "repeat"};
   background-position: center;
-  min-height: 419px;
+  height: fit-content;
   box-shadow: ${({ theme }) => theme.boxShadows[0]};
   &:hover {
     box-shadow: ${({ theme }) => theme.boxShadows[1]};
@@ -120,7 +145,7 @@ const TextContainer = styled(animated.div)<{ flipped: number }>`
 `;
 
 const SubHeadingCont = styled.div`
-  margin: 0 5px 20px 5px;
+  margin: 0 0 40px 0;
   padding: 0;
 `;
 
@@ -129,3 +154,9 @@ const H4 = styled.h2`
     color: ${({ theme }) => theme.colours.honeydew};
   }
 `;
+
+interface Artist {
+  fname: string;
+  lname: string;
+  bio: Document;
+}

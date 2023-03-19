@@ -1,15 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
-import styled, { css, keyframes } from "styled-components";
-import { Container } from "@material-ui/core";
 import { useSpring, animated } from "react-spring";
-import {
-  headerSpringProps,
-  pixelBorder,
-  gradientAnimation,
-} from "../../Components/Misc/Misc";
+import { headerSpringProps } from "../../Components/Misc/Misc";
 import { Link, useLocation } from "react-router-dom";
 import { IconChevron, IconHamburger } from "../Misc/MiscIcons";
-import { IconButton } from "../Button/IconButton";
 import {
   HeaderContainer,
   NavContainer,
@@ -32,8 +25,18 @@ export function Header(props: any): JSX.Element {
   const toggleNav = () => setIsNavOpen(!isNavOpen);
 
   // load dynamic from store in future
-  const navitemlist = ["Auto-Biography", "Art Portfolio", "Inspire Me"];
-  const navItemRoutes = ["/bio", "/portfolio", "/inspire"];
+  const navitemlist = [
+    "Auto-Biography",
+    "Art Portfolio",
+    "Inspire Me",
+    // "Posts",
+  ];
+  const navItemRoutes = [
+    "/bio",
+    "/portfolio",
+    "/inspire",
+    // "/posts"
+  ];
   const location = useLocation();
 
   const navitemobjects = useMemo(

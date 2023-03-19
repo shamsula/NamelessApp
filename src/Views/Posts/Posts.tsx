@@ -1,19 +1,22 @@
-import React, { useMemo, useState } from "react";
-import styled from "styled-components";
-import Card from "../../Components/GalleryCard/GalleryCard";
+//create new tsx component for posts
+import React, { useState, useMemo } from "react";
+import styled from "styled-components/macro";
+import Spinner from "../../Components/Spinner/Spinner";
 import { Pagination } from "@mui/material";
-import { ImageData } from "./Portfolio";
+import Card from "../../Components/GalleryCard/GalleryCard";
+import { Body, StyledContainer } from "../../Components/Misc/Misc";
 import { useSelector } from "react-redux";
 
-export default function LegacyPortfolio(): JSX.Element {
+export default function Posts(): JSX.Element {
   const artwork = useSelector((state: any) => state.artGallery.artwork);
+  const [data, setData] = useState<ImageDataItems>(artwork);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [cardsPerPage] = useState<number>(6);
+  const [cardsPerPage] = useState<number>(3);
 
   const maxPages = useMemo(
-    () => (artwork ? Math.ceil(artwork.length / cardsPerPage) : 1),
-    [artwork, cardsPerPage]
+    () => (data ? Math.ceil(data.length / cardsPerPage) : 1),
+    [data, cardsPerPage]
   );
 
   // pagination index stuff
@@ -35,22 +38,30 @@ export default function LegacyPortfolio(): JSX.Element {
     setCurrentPage(value);
   };
 
-  return (
-    <Gallery data-test="grid-gallery">
-      <CardsContainer>
-        {currentCards && currentCards.length ? (
-          currentCards.map((data: ImageData) => <Card data={data} />)
-        ) : (
-          <h1>No posts yet</h1>
-        )}
-      </CardsContainer>
+  if (!data) {
+    return <Spinner />;
+  }
 
-      <StyledPagination
-        page={currentPage}
-        onChange={handleChange}
-        count={maxPages}
-      />
-    </Gallery>
+  return (
+    <StyledContainer maxWidth="md">
+      <Body>
+        <Gallery data-test="grid-gallery">
+          <CardsContainer>
+            {artwork && artwork.length ? (
+              currentCards.map((data: ImageData) => <Card data={data} />)
+            ) : (
+              <h1>No posts yet</h1>
+            )}
+          </CardsContainer>
+
+          <StyledPagination
+            page={currentPage}
+            onChange={handleChange}
+            count={maxPages}
+          />
+        </Gallery>
+      </Body>
+    </StyledContainer>
   );
 }
 
@@ -83,10 +94,6 @@ const CardsContainer = styled.div`
 const Gallery = styled.div`
   display: flex;
   flex-direction: column;
-
-  .MuiPagination-ul {
-    margin-top: 20px;
-  }
 `;
 
 const StyledPagination = styled(Pagination)`
@@ -104,3 +111,17 @@ const StyledPagination = styled(Pagination)`
     }
   }
 `;
+
+export interface ImageData {
+  title: string;
+  media: {
+    url: string;
+    fileName: string;
+    width: number;
+    height: number;
+  };
+  description: string;
+  externalUrl: string;
+}
+
+export interface ImageDataItems extends Array<ImageData> {}
