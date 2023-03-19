@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import styled from "styled-components/macro";
 import { Switch, Route, Redirect } from "react-router-dom";
@@ -15,8 +15,12 @@ import { Inspire } from "./Views/Inspire/Inspire";
 import breakpoints from "./Components/Common/breakpoints";
 import { Header } from "./Components/Header/Header";
 import Posts from "./Views/Posts/Posts";
+import { useDispatch } from "react-redux";
+import { fetchArtwork } from "./store/artGallery";
 
 function App() {
+  const dispatch = useDispatch();
+
   const springProps = useSpring({
     opacity: 1,
     minHeight: "100vh",
@@ -28,6 +32,10 @@ function App() {
     },
     config: { duration: 1500 },
   });
+
+  useEffect(() => {
+    dispatch(fetchArtwork());
+  }, [dispatch]);
 
   return (
     <HomeCont style={springProps}>

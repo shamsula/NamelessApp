@@ -9,13 +9,7 @@ import { ThemeProvider } from "styled-components/macro";
 import { theme } from "./Style/theme";
 import { GlobalStyle } from "./Style/GlobalStyle";
 import { Provider } from "react-redux";
-import { reducer } from "./store/store";
-import { getDefaultMiddleware, configureStore } from "@reduxjs/toolkit";
-
-const store = configureStore({
-  reducer,
-  middleware: [...getDefaultMiddleware()],
-});
+import { store } from "./store/store";
 
 ReactDOM.render(
   <React.StrictMode>

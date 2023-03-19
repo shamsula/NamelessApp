@@ -5,55 +5,14 @@ import Spinner from "../../Components/Spinner/Spinner";
 import { Pagination } from "@mui/material";
 import Card from "../../Components/GalleryCard/GalleryCard";
 import { Body, StyledContainer } from "../../Components/Misc/Misc";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Posts(): JSX.Element {
-  const [data, setData] = useState<ImageDataItems>([]);
+  const artwork = useSelector((state: any) => state.artGallery.artwork);
+  const [data, setData] = useState<ImageDataItems>(artwork);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage] = useState<number>(3);
-
-  // rest stuff
-  // fetch data for portfolio
-  const query = `
-{
-    portfolioCollection {
-        items {
-          title
-          description
-          media {
-            url
-            fileName
-            width
-            height
-          }
-          externalUrl
-        }
-      }
-}
-`;
-
-  useEffect(() => {
-    window
-      .fetch(
-        `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_SPACE_ID}/`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.REACT_APP_DELIVERY_API}`,
-          },
-          body: JSON.stringify({ query }),
-        }
-      )
-      .then((response) => response.json())
-      .then(({ data, errors }) => {
-        if (errors) {
-          console.error(errors);
-        }
-        console.log(data.portfolioCollection.items);
-        setData(data.portfolioCollection.items);
-      });
-  }, []);
 
   const maxPages = useMemo(
     () => (data ? Math.ceil(data.length / cardsPerPage) : 1),
@@ -71,9 +30,8 @@ export default function Posts(): JSX.Element {
   );
 
   const currentCards = useMemo(
-    () => (data ? data?.slice(indexOfFirstCard, indexOfLastCard) : []),
-    // [data.images, indexOfFirstCard, indexOfLastCard]
-    [data, indexOfFirstCard, indexOfLastCard]
+    () => (artwork ? artwork?.slice(indexOfFirstCard, indexOfLastCard) : []),
+    [artwork, indexOfFirstCard, indexOfLastCard]
   );
 
   const handleChange = (event: any, value: any) => {
@@ -89,7 +47,7 @@ export default function Posts(): JSX.Element {
       <Body>
         <Gallery data-test="grid-gallery">
           <CardsContainer>
-            {data && data.length ? (
+            {artwork && artwork.length ? (
               currentCards.map((data: ImageData) => <Card data={data} />)
             ) : (
               <h1>No posts yet</h1>
