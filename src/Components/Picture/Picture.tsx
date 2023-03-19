@@ -64,7 +64,7 @@ const PictureCanvas = styled(animated.div)<{
   animation?: boolean | undefined;
 }>`
   background: ${({ url }) => `url(${url}), black`};
-  background-size: ${({ animation }) => (animation ? "100% auto" : "100%")};
+  background-size: ${({ animation }) => (animation ? "100% auto" : "cover")};
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;

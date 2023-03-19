@@ -7,9 +7,7 @@ const initialState = {
   error: null,
 } as any;
 
-// rest stuff
-// fetch data for portfolio
-const query = `
+const galleryQuery = `
 {
   portfolioCollection {
     items {
@@ -22,6 +20,22 @@ const query = `
         height
       }
       externalUrl
+    }
+  }
+  authorCollection {
+    items {
+      fname
+      lname
+      isAdmin
+      bio {
+        json
+      }
+      photo {
+        url
+        fileName
+        width
+        height
+      }
     }
   }
 }
@@ -40,7 +54,7 @@ export const fetchArtwork = createAsyncThunk(
           "Content-Type": "application/json",
           Authorization: `Bearer ${process.env.REACT_APP_DELIVERY_API}`,
         },
-        body: JSON.stringify({ query }),
+        body: JSON.stringify({ query: galleryQuery }),
       }
     )
       .then((response) => response.json())
@@ -48,13 +62,16 @@ export const fetchArtwork = createAsyncThunk(
         if (errors) {
           console.error(errors);
         }
-        console.log(data.portfolioCollection.items, "data");
-        return data.portfolioCollection.items;
+        return {
+          artwork: data.portfolioCollection.items,
+          artists: data.authorCollection.items,
+        };
       });
     return response;
   }
 );
 
+// fetch artist data
 const artGallerySlice = createSlice({
   name: "artGallery",
   initialState,
@@ -66,7 +83,8 @@ const artGallerySlice = createSlice({
   /* eslint-disable */
   extraReducers: (builder) => {
     builder.addCase(fetchArtwork.fulfilled, (state, action) => {
-      state.artwork = action.payload;
+      state.artwork = action.payload.artwork;
+      state.artists = action.payload.artists;
       state.isLoading = false;
       state.error = null;
     }),
@@ -79,8 +97,6 @@ const artGallerySlice = createSlice({
       });
   },
 });
-
-// export const {  } = artGallerySlice.actions;
 
 export const selectArtwork = (state: any) => state.artGallery.artwork;
 export const selectArtists = (state: any) => state.artGallery.artists;
