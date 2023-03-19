@@ -1,21 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import styled from "styled-components/macro";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
-import Biography from "./Bio/Bio";
-import Portfolio from "./Portfolio/Portfolio";
-import Home from "./Home/Home";
+import Biography from "./Views/Bio/Bio";
+import Portfolio from "./Views/Portfolio/Portfolio";
+import Home from "./Views/Home/Home";
 import { Top } from "./Components/Misc/Misc";
 import { Link } from "react-router-dom";
 import Spinner from "./Components/Spinner/Spinner";
 import { Container } from "@material-ui/core";
 import Footer from "./TopStyle/Footer";
-import { Inspire } from "./Inspire/Inspire";
+import { Inspire } from "./Views/Inspire/Inspire";
 import breakpoints from "./Components/Common/breakpoints";
 import { Header } from "./Components/Header/Header";
+// import Posts from "./Views/Posts/Posts";
+import { useDispatch } from "react-redux";
+import { fetchArtwork } from "./store/artGallery";
 
 function App() {
+  const dispatch = useDispatch();
+
   const springProps = useSpring({
     opacity: 1,
     minHeight: "100vh",
@@ -27,6 +32,10 @@ function App() {
     },
     config: { duration: 1500 },
   });
+
+  useEffect(() => {
+    dispatch(fetchArtwork());
+  }, [dispatch]);
 
   return (
     <HomeCont style={springProps}>
@@ -49,6 +58,9 @@ function App() {
           <Route path="/inspire">
             <Inspire />
           </Route>
+          {/* <Route path="/posts">
+            <Posts />
+          </Route> */}
           <Redirect to="/" />
         </Switch>
         <Footer>
@@ -65,7 +77,6 @@ export default App;
 
 const HomeCont = styled(animated.div)`
   display: flex;
-  // min-height: 100vh;
   background-color: ${({ theme }) => theme.colours.newBlack};
 `;
 

@@ -1,14 +1,20 @@
 import React, { useMemo, useState } from "react";
 import styled from "styled-components";
-import Card from "../Components/GalleryCard/GalleryCard";
-import data from "../Data/data.json";
+import Card from "../../Components/GalleryCard/GalleryCard";
 import { Pagination } from "@mui/material";
+import { ImageData } from "./Portfolio";
+import { useSelector } from "react-redux";
 
 export default function LegacyPortfolio(): JSX.Element {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [cardsPerPage] = useState<number>(3);
+  const artwork = useSelector((state: any) => state.artGallery.artwork);
 
-  const maxPages = Math.ceil(data.images.length / cardsPerPage);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [cardsPerPage] = useState<number>(6);
+
+  const maxPages = useMemo(
+    () => (artwork ? Math.ceil(artwork.length / cardsPerPage) : 1),
+    [artwork, cardsPerPage]
+  );
 
   // pagination index stuff
   const indexOfLastCard = useMemo(
@@ -21,8 +27,8 @@ export default function LegacyPortfolio(): JSX.Element {
   );
 
   const currentCards = useMemo(
-    () => data.images.slice(indexOfFirstCard, indexOfLastCard),
-    [data.images, indexOfFirstCard, indexOfLastCard]
+    () => (artwork ? artwork?.slice(indexOfFirstCard, indexOfLastCard) : []),
+    [artwork, indexOfFirstCard, indexOfLastCard]
   );
 
   const handleChange = (event: any, value: any) => {
@@ -32,9 +38,11 @@ export default function LegacyPortfolio(): JSX.Element {
   return (
     <Gallery data-test="grid-gallery">
       <CardsContainer>
-        {currentCards.map((i: ImageData) => (
-          <Card data={i} />
-        ))}
+        {currentCards && currentCards.length ? (
+          currentCards.map((data: ImageData) => <Card data={data} />)
+        ) : (
+          <h1>No posts yet</h1>
+        )}
       </CardsContainer>
 
       <StyledPagination
@@ -75,6 +83,10 @@ const CardsContainer = styled.div`
 const Gallery = styled.div`
   display: flex;
   flex-direction: column;
+
+  .MuiPagination-ul {
+    margin-top: 20px;
+  }
 `;
 
 const StyledPagination = styled(Pagination)`
@@ -92,9 +104,3 @@ const StyledPagination = styled(Pagination)`
     }
   }
 `;
-
-export interface ImageData {
-  name: string;
-  url: string;
-  desc: string;
-}
