@@ -1,6 +1,6 @@
 {
   "name": "moe-demo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.16.3",
