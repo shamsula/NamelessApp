@@ -19,6 +19,16 @@ const galleryQuery = `
         width
         height
       }
+      authorId {
+        sys {
+          id
+        }
+      }
+      sys {
+        firstPublishedAt
+        publishedAt
+
+      }
       externalUrl
     }
   }
@@ -27,6 +37,9 @@ const galleryQuery = `
       fname
       lname
       isAdmin
+      sys {
+        id
+      }
       bio {
         json
       }
