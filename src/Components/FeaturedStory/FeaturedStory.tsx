@@ -20,7 +20,7 @@ export function FeturedStory(props: Props): JSX.Element {
   );
 
   return (
-    <StoryContainer>
+    <StoryContainer data-test="story-container">
       <h2 className="title">Featured Art</h2>
       {artwork && artwork.length && (
         <StoryCard data={artwork[randomFeaturedStory]} />

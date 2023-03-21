@@ -13,8 +13,9 @@ const calc = (x: number, y: number) => [
 type Props = {
   label: string;
   colour?: string;
+  className?: string;
 };
-export function Button({ label, colour }: Props): JSX.Element {
+export function Button({ label, colour, className }: Props): JSX.Element {
   const [width, height] = useWindowSize();
   const isButtonAnimated: boolean = width >= breakpoint.size.md;
 
@@ -27,7 +28,7 @@ export function Button({ label, colour }: Props): JSX.Element {
     <>
       {isButtonAnimated === true ? (
         <StyledAnimatedButton
-          className="card"
+          className={className}
           onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
           onMouseLeave={() => set({ xys: [27, 1, 1] })}
           style={{
@@ -42,7 +43,7 @@ export function Button({ label, colour }: Props): JSX.Element {
           {label}
         </StyledAnimatedButton>
       ) : (
-        <StyledButton className="card" colour={colour} role="button">
+        <StyledButton className={className} colour={colour} role="button">
           {label}
         </StyledButton>
       )}

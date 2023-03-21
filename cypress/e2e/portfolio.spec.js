@@ -8,4 +8,8 @@ describe("test portfolio page", () => {
     cy.getBySel("toggle-button").click();
     cy.getBySel("p5-wrapper").should("not.exist");
   });
+  it("back button returns to homepage", () => {
+    cy.getBySel("styled-back").click();
+    cy.getBySel("header-page").should("have.text", "Home");
+  });
 });
