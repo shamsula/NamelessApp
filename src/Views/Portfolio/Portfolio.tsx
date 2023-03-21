@@ -95,7 +95,8 @@ export function Portfolio(): JSX.Element {
               <StyledSwiper
                 loop={true}
                 spaceBetween={10}
-                navigation={isAnimationEnabled ? true : false}
+                // navigation={isAnimationEnabled ? true : false}
+                navigation={true}
                 thumbs={{ swiper: thumbsSwiper }}
                 modules={[FreeMode, Navigation, Thumbs]}
                 direction={isAnimationEnabled ? "horizontal" : "vertical"}
@@ -153,6 +154,11 @@ export interface ImageData {
   };
   description: string;
   externalUrl: string;
+  authorId: any;
+  sys: {
+    firstPublishedAt: string;
+    publishedAt: string;
+  };
 }
 
 export interface ImageDataItems extends Array<ImageData> {}

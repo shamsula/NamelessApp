@@ -7,7 +7,7 @@ type Props = {
 };
 function Footer(props: Props): JSX.Element {
   return (
-    <StyledFooter maxWidth="md">
+    <StyledFooter maxWidth="lg">
       {React.Children.map(props.children, (child) => (
         <AberrationContainer>{child}</AberrationContainer>
       ))}

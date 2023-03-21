@@ -122,6 +122,11 @@ export interface ImageData {
   };
   description: string;
   externalUrl: string;
+  authorId: any;
+  sys: {
+    firstPublishedAt: string;
+    publishedAt: string;
+  };
 }
 
 export interface ImageDataItems extends Array<ImageData> {}
