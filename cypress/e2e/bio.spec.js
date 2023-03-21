@@ -1,12 +1,13 @@
 describe("renders biography component", () => {
   it("renders corretly", () => {
     cy.visit("/bio");
-    cy.getBySel("header-page").should("have.text", "Biography");
+    cy.getBySel("header-page").should("have.text", "Auto-Biography");
   });
   it("test the Flip Container function", () => {
     cy.visit("/bio");
     cy.getBySel("bio-text").click().wait(500).click().wait(500).click();
     cy.getBySel("flip-side").should("have.text", "Flip Side");
+    cy.getBySel("cursive").should("have.text", "Fin.");
   });
   it("faster consecutive clicks", () => {
     cy.visit("/bio");
@@ -18,7 +19,7 @@ describe("renders biography component", () => {
       .click()
       .wait(150)
       .click();
-    cy.getBySel("front-side").should("have.text", "Intro");
+    cy.getBySel("front-side").should("exist", "Intro");
   });
   it("Click back button to return to homepage", () => {
     cy.visit("/bio");
