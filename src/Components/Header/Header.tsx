@@ -12,6 +12,7 @@ import {
 } from "./HeaderStyles";
 import { useWindowSize } from "@react-hook/window-size";
 import breakpoint from "../Common/breakpoints";
+import styled from "styled-components";
 
 export function Header(props: any): JSX.Element {
   const springProps = useSpring(headerSpringProps);
@@ -67,7 +68,7 @@ export function Header(props: any): JSX.Element {
   }, [scrollPosition]);
 
   const isScrollBeyondTresh = useMemo(() => {
-    return scrollPosition > 65 && !isNavOpen;
+    return scrollPosition > 65 && width > 768 && !isNavOpen;
   }, [scrollPosition]);
 
   return (
@@ -94,9 +95,13 @@ export function Header(props: any): JSX.Element {
             <IconHamburger />
           )}
         </StyledIconButtons>
-        <animated.h1 style={springProps}>{currentPageTitle}</animated.h1>
+        <H1 style={springProps}>{currentPageTitle}</H1>
         {props.children}
       </CurrentPageTitle>
     </HeaderContainer>
   );
 }
+
+const H1 = styled(animated.h1)`
+  color: ${({ theme }) => theme.colours.blueSapphire};
+`;

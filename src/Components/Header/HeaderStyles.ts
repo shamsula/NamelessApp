@@ -6,7 +6,7 @@ import { gradientAnimation, pixelBorder } from "../Misc/Misc";
 
 export const HeaderContainer = styled.div`
   width: 100%;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -41,8 +41,8 @@ export const HeaderContainer = styled.div`
   @media only screen and (min-width: ${breakpoints.size.lg}px) {
     z-index: 100;
     top: 0;
-
     height: 110px;
+    position: fixed;
 
     && > div:first-child {
       transition: all 0.3s ease-in-out;
@@ -155,7 +155,7 @@ export const CurrentPageTitle = styled(Container)<{
   height: 80px;
   box-shadow: ${({ theme }) => theme.boxShadows[1]};
 
-  position: relative;
+  position: absolute;
   top: ${({ shouldHide }) => (shouldHide ? "-145px" : 0)};
   z-index: 300;
   transition: all 0.3s ease-in-out;
@@ -167,6 +167,8 @@ export const CurrentPageTitle = styled(Container)<{
   }
 
   @media only screen and (min-width: ${breakpoints.size.lg}px) {
+    position: relative;
+    border-radius: 4px;
     h1 {
       padding-left: 0;
       font-size: 32px;

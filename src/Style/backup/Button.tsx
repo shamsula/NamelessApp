@@ -1,11 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components/macro";
 import { useSpring, animated, interpolate } from "react-spring";
-import {
-  useWindowSize,
-  useWindowWidth,
-  useWindowHeight,
-} from "@react-hook/window-size";
+import { useWindowWidth } from "@react-hook/window-size";
 
 const calc = (x: number, y: number) => [
   -(y - window.innerHeight / 2) / 20,
@@ -18,11 +14,9 @@ type Props = {
   colour?: string;
 };
 export function Button({ label, colour }: Props): JSX.Element {
-  const [width, height] = useWindowSize();
   const onlyWidth = useWindowWidth();
-  const onlyHeight = useWindowHeight();
 
-  const isButtonAnimated: boolean = width >= 768;
+  const isButtonAnimated: boolean = onlyWidth >= 768;
 
   const [props, set] = useSpring(() => ({
     xys: [27, 1, 1],
