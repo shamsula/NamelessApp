@@ -44,8 +44,10 @@ export function Bio(props: Props): JSX.Element {
     if (canClick) {
       return (
         <>
-          <SubHeadingCont data-test={!flipped ? "flip-side" : "front-side"}>
-            <H4>{!flipped ? "Intro" : "Flip Side"}</H4>
+          <SubHeadingCont>
+            <H4 data-test={!flipped ? "front-side" : "flip-side"}>
+              {!flipped ? "Intro" : "Flip Side"}
+            </H4>
           </SubHeadingCont>
           <p className={`${flipped && "invisible"}`}>
             {documentToReactComponents(author.bio.json)}
@@ -55,7 +57,9 @@ export function Bio(props: Props): JSX.Element {
               - {author.fname} {author.lname}
             </p>
           ) : (
-            <p className="cursive">Fin.</p>
+            <p data-test="cursive" className="cursive">
+              Fin.
+            </p>
           )}
         </>
       );

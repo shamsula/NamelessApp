@@ -21,7 +21,7 @@ export function Home(props: Props): JSX.Element {
           <FeaturedStory />
           <LinksContainer>
             <DelayedLink to="/bio" tabIndex={-1}>
-              <Button label="Auto-Biography" />
+              <Button className="bio-btn" label="Auto-Biography" />
             </DelayedLink>
             <DelayedLink to="/portfolio" tabIndex={-1}>
               <Button label="Art Portfolio" />
