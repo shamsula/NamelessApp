@@ -1,11 +1,16 @@
 ## "About" this NamelessApp
-This is a simple React web application that I built to showcase some of the cooler libraries and techniques that I've come across over the years. If you're hit with a sense of nostalgia, you're welcome. 😉
+This is a simple, yet elegant, React web application that I built to showcase some of the cooler libraries and techniques that I've come across over the years. If you're hit with a sense of nostalgia, you're welcome. 😉
+
+Stacks Used:
+[React](https://react.dev/)  + [Redux Toolkit](https://redux-toolkit.js.org/) + [Contentful](https://www.contentful.com/) + [Cypress](https://www.cypress.io/)
+
+[![My Skills](https://skillicons.dev/icons?i=ts,html,css,react,redux,azure)](https://skillicons.dev)
 
 ## Available Scripts 
 
 In the project directory, you can run these commands:
 
-### `yarn start`
+### `yarn run dev`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -14,7 +19,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 Runs tests using Cypress
 
-I have added some UI and API tests - they should suffice for now.
+I have added some UI Integration and API tests - they should suffice for now.
 
 Note: UI Tests are no longer being actively maintained. I may come back to this years later. 🤷
 
